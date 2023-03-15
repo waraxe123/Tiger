@@ -7,6 +7,9 @@ from pyrogram import filters
 from pyrogram.types import Message
 from . import *
 
+__PLUGIN__ = os.path.basename(__file__.replace(".py", ""))
+
+
 async def extract_user_peler(message: Message) -> (int, str):
     """extracts the user from a message"""
     user_id = None
@@ -38,11 +41,10 @@ async def extract_user_peler(message: Message) -> (int, str):
 
     return (user_id, user_first_name)
 
-
-__PLUGIN__ = os.path.basename(__file__.replace(".py", ""))
-
 async def cas_check(c, m):
-    user_id, user_first_name = extract_user_peler(m)
+    if m.reply_to_message:
+        user_id = m.reply_to_message.from_user.id
+        user_first_name = m.reply_to_message.from_user.first_name
     results = requests.get(f"https://api.cas.chat/check?user_id={user_id}").json()
     offenses_cas = results["result"]["offenses"]
     offense_msg = results["result"]["messages"]
