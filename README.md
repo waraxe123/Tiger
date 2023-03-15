@@ -30,7 +30,7 @@ Rendy@Ubuntu~ $ python3 -m TigerX
 
 ```python
 from TigerX import *
-from lib import * 
+from TigerX.lib import * 
 
 from pykillerx.help import add_command_help 
 
