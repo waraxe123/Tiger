@@ -13,7 +13,7 @@ async def progress_callback(current, total, bot: Client, message: Message):
         await message.edit(f"{humanize.naturalsize(current)} / {humanize.naturalsize(total)}")
 
 
-async def upload_helper(bot: Client, message: Message):
+async def upload_helper(bot, message):
     if len(message.command) > 1:
         await bot.send_document('self', message.command[1], progress=progress_callback, progress_args=(bot, message))
     else:
