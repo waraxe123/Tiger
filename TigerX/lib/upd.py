@@ -15,8 +15,6 @@ async def progress_callback(current, total, bot: Client, message: Message):
 
 async def upload_helper(bot, message):
     if len(message.command) > 1:
-        await bot.send_document('self', message.command[1], progress=progress_callback, progress_args=(bot, message))
+        await bot.send_document(message.chat.id, message.command[1], progress=progress_callback, progress_args=(bot, message))
     else:
         await message.edit('No path provided.')
-        await asyncio.sleep(3)
-    await message.delete()
