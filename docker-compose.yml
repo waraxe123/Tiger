@@ -3,7 +3,7 @@ version: "3.9"
 services:
   tigerx:
       build:
-        context: https://github.com/TeamKillerX/TigerX-Userbot.git#main
+        context: https://github.com/TeamKillerX/TigerX-Userbot.git#dev
       restart: on-failure
       env_file:
         - config.env
