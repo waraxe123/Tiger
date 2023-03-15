@@ -13,7 +13,6 @@ from logging.handlers import RotatingFileHandler
 from typing import Any, Dict
 from aiohttp import ClientSession
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from pykillerx.helper import *
 from datetime import datetime as dt
 from aiohttp import ClientSession
 from pytgcalls import GroupCallFactory
