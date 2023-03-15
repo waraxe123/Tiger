@@ -100,7 +100,7 @@ async def GetVidInfo(link):
     return artist, duration, timeS, title, vid
 
 
-async def ytv_dl(c: Client, m: Message):
+async def ytv_dl(c, m):
     link = m.text.split(None, 1)[1]
     if "youtube.com" or "youtu.be" in link:
         await m.edit_text("<i>Getting Video Information...</i>")
@@ -150,7 +150,7 @@ async def ytv_dl(c: Client, m: Message):
     return
 
 
-async def yta_dl(c: Client, m: Message):
+async def yta_dl(c, m):
     link = m.text.split(None, 1)[1]
     if "youtube.com" or "youtu.be" in link:
         await m.edit_text("<i>Getting Music Information...</i>")
@@ -197,7 +197,7 @@ async def yta_dl(c: Client, m: Message):
     return
 
 
-async def ytp_dl(c: Client, m: Message):
+async def ytp_dl(c, m):
     link = m.text.split(None, 1)[1]
     if "youtube.com" or "youtu.be" in link:
         await m.edit_text("<i>Getting Playlist Information...</i>")
