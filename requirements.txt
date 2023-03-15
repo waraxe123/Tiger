@@ -2,6 +2,7 @@ APScheduler
 Pillow
 aiohttp
 asyncio
+wget
 bs4
 gitpython
 googlesearch-python==1.0.1
