@@ -6,7 +6,7 @@ from TigerX.lib import *
 # ytp <link>: Download Playlist from YouTube.
 
 
-@randydev(command(["vid", "video"], cmd) owner)
+@randydev(command(["vid", "video"], cmd) & owner)
 async def yt_video_command(c: Client, m: Message):
     await yt_video(c, m)
 
