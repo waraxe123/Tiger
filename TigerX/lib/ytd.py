@@ -12,7 +12,7 @@ from pykillerx.helper.dl_helpers import progress_for_pyrogram
 from yt_dlp import YoutubeDL, utils
 from pykillerx.helper.check_size import get_directory_size
 from TigerX import *
-from lib import *
+from TigerX.lib import *
 
 __PLUGIN__ = os.path.basename(__file__.replace(".py", ""))
 
