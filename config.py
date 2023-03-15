@@ -34,7 +34,7 @@ SEARCH_ENGINE_ID = getenv("SEARCH_ENGINE_ID")
 SAVE_CONTENT = int(getenv("SAVE_CONTENT", -1001624259885))
 
 BOT_VER = "0.3.15@build"
-BRANCH = getenv("BRANCH", "main")
+BRANCH = getenv("BRANCH", "dev")
  
 STRING_SESSION1 = getenv("STRING_SESSION1", "")
 STRING_SESSION2 = getenv("STRING_SESSION2", None)
