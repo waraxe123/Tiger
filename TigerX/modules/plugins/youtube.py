@@ -8,7 +8,7 @@ from TigerX.lib import *
 
 @randydev(command(["vid", "video"], cmd) owner)
 async def yt_video_command(c: Client, m: Message):
-    await async def yt_video(c, m)
+    await yt_video(c, m)
 
 @randydev(command("ytv", cmd) & owner)
 async def ytv_dl_command(c: Client, m: Message):
