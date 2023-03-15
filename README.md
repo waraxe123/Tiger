@@ -1,6 +1,13 @@
-## 🐯 TigerX-Userbot 🐯
-
 ![20230312_175518](https://user-images.githubusercontent.com/90479255/224540113-fe730120-64e1-44d4-90ca-000c23cd3796.jpg)
+
+<h2 align="center"> 🐯 TigerX-Userbot 🐯</h2> 
+
+![Repo Size](https://img.shields.io/github/repo-size/TeamKillerX/TigerX-Userbot)
+![License](https://img.shields.io/github/license/TeamKillerX/TigerX-Userbot)
+![Python Version](https://img.shields.io/badge/python-3.x.x-aqua)
+![Maintained](https://img.shields.io/badge/Maintained%20%3F-Yes-orange)
+![Files](https://img.shields.io/github/directory-file-count/TeamkillerX/TigerX-Userbot?label=repo%20files)
+
 
 ## 📝 Disclaimer 📝
 ```
