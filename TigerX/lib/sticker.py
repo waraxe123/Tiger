@@ -31,7 +31,6 @@ from pyrogram.types import Message
 from TigerX import *
 from TigerX.lib import *
 
-from config import *
 
 from pykillerx import *
 from pykillerx.helper.hacking import *
