@@ -59,8 +59,6 @@ import configparser
 config = configparser.ConfigParser()
 config.read("config.ini")
 
-os.chdir(os.path.dirname(os.path.realpath(__file__)))  
-
 # pyrogram
 
 API_ID = int(config.get("pyrogram", "api_id"))
