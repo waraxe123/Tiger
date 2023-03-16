@@ -320,8 +320,8 @@ SLAP_LUCU_INDONESIA = [
 # code by @xtsea
 
 async def slap_template_ok(c, m):
+    user1 = (await c.get_users("me")).first_name
     if m.reply_to_message and message.reply_to_message.from_user:
-        user1 = c.me.first_name
         user2 = message.reply_to_message.from_user.first_name
         temp = choice(SLAP_TEMPLATES)
         item = choice(ITEMS)
