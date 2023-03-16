@@ -61,7 +61,7 @@ cfg.read("config.ini")
 
 # pyrogram
 
-API_ID = cfg.get("pyrogram", "api_id")
+API_ID = int(cfg.get("pyrogram", "api_id"))
 API_HASH = cfg.get("pyrogram", "api_hash")
 BOT_TOKEN = cfg.get("pyrogram", "bot_token")
 
