@@ -15,7 +15,7 @@ from aiohttp import ClientSession
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime as dt
 from aiohttp import ClientSession
-from pytgcalls import GroupCallFactory
+# from pytgcalls import GroupCallFactory
 from config import *
 
 StartTime = time.time()
@@ -82,7 +82,7 @@ if STRING_SESSION3:
    clients.append(client3)
 
 
-client = [client for client in[STRING_SESSION1, STRING_SESSION2, STRING_SESSION3]if client]
-for client in clients:
-    if not hasattr(client, "group_call"):
-        setattr(client, "group_call", GroupCallFactory(client).get_group_call())
+# client = [client for client in[STRING_SESSION1, STRING_SESSION2, STRING_SESSION3]if client]
+# for client in clients:
+#    if not hasattr(client, "group_call"):
+#        setattr(client, "group_call", GroupCallFactory(client).get_group_call())
