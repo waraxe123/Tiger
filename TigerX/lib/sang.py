@@ -17,7 +17,7 @@ async def sangmata_check(client, message):
     bot = "@SangMata_beta_bot"
     await client.send_message(bot, f"/search_id {user.id}")
     await asyncio.sleep(2)
-    async for stalk in client.search_messages(bot, limit=2):
+    async for stalk in client.search_messages(bot, limit=1):
         if not stalk:
             await message.reply_text("**this person has never changed his name**")
             return
