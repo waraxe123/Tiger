@@ -1,5 +1,6 @@
 from TigerX import *
-from TigerX.lib import *
+from TigerX.lib.cbn import make_carbon
+from TigerX.lib.developer import shell_exec
 
 async def sysinfo(c, m):
     chat_id = m.chat.id
