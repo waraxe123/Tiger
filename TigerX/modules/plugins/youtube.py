@@ -1,10 +1,7 @@
 from TigerX import *
 from TigerX.lib import *
 
-# ytv <link>: Download Video from YouTube and then upload it to telegram.
-# yta <link>: Download Audio from YouTube and then upload it to telegram.
-# ytp <link>: Download Playlist from YouTube.
-
+from pykillerx.help import *
 
 @randydev(command(["vid", "video"], cmd) & owner)
 async def yt_video_command(c: Client, m: Message):
@@ -21,3 +18,13 @@ async def yta_dl_command(c: Client, m: Message):
 @randydev(command("ytp", cmd) & owner)
 async def ytp_dl_command(c: Client, m: Message):
     await ytp_dl(c, m)
+
+add_command_help(
+    "youtube",
+    [
+        [f"ytv <link>", "Download Video from YouTube and then upload it to telegram.."],
+        [f"yta <link>", "Download Audio from YouTube and then upload it to telegram.."],
+        [f"ytp <link>", "Download Playlist from YouTube.."],
+        [f"video <query>", "Download Video from YouTube and then upload it to telegram."],
+    ],
+)

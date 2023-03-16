@@ -106,7 +106,10 @@ async def GetVidInfo(link):
 
 async def ytv_dl(c, m):
     link = m.text.split(None, 1)[1]
-    if "youtube.com" or "youtu.be" in link:
+    if not link:
+       await m.reply_text("unsupported text use link youtube")
+       return
+    if "youtube.com" in link or "youtu.be" in link:
         await m.edit_text("<i>Getting Video Information...</i>")
         try:
             artist, duration, timeS, title, vid = await GetVidInfo(
@@ -156,7 +159,10 @@ async def ytv_dl(c, m):
 
 async def yta_dl(c, m):
     link = m.text.split(None, 1)[1]
-    if "youtube.com" or "youtu.be" in link:
+    if not link:
+       await m.reply_text("unsupported text use link youtube")
+       return
+    if "youtube.com" in link or "youtu.be" in link:
         await m.edit_text("<i>Getting Music Information...</i>")
         try:
             artist, duration, timeS, title, mid = await GetVidInfo(
@@ -203,7 +209,10 @@ async def yta_dl(c, m):
 
 async def ytp_dl(c, m):
     link = m.text.split(None, 1)[1]
-    if "youtube.com" or "youtu.be" in link:
+    if not link:
+       await m.reply_text("unsupported text use link youtube")
+       return
+    if "youtube.com" in link or "youtu.be" in link:
         await m.edit_text("<i>Getting Playlist Information...</i>")
         try:
             artist, title, pid, entries = await GetPlaylistInfo(
