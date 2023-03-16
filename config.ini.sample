@@ -1,0 +1,23 @@
+[pyrogram]
+api_id =
+api_hash = 
+bot_token = 
+
+[custom]
+alive_pic = 
+alive_text = 
+pack_name = kang pack
+prefixes = .
+
+[database]
+db_url = 
+
+[apikey]
+rmbg_api = 
+openai_api = 
+deepai_api = 
+api_key_google = 
+search_engine_id = 
+
+[string_pyrogram]
+string_session1 = 
