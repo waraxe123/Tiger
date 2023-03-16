@@ -10,7 +10,6 @@ from youtubesearchpython import SearchVideos
 from datetime import datetime as dt
 from pyrogram import filters, errors
 from pyrogram.types import Message
-from config import MAX_MESSAGE_LENGTH
 from pykillerx.helper.dl_helpers import progress_for_pyrogram
 from yt_dlp import YoutubeDL, utils
 from pykillerx.helper.check_size import get_directory_size
