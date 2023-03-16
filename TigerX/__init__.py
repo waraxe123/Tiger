@@ -67,7 +67,7 @@ BOT_TOKEN = cfg.get("pyrogram", "bot_token")
 
 # owner sudo 
 
-OWNER_ID = cfg.get("admins", "owner_id")
+OWNER_ID = int(cfg.get("admins", "owner_id"))
 
 # new custom features
 
