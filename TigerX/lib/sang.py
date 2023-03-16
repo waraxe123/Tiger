@@ -16,10 +16,11 @@ async def sangmata_check(client, message):
     bot = "@SangMata_beta_bot"
     await client.send_message(bot, f"/search_id {user.id}")
     await asyncio.sleep(1)
-    async for stalk in client.search_messages(bot, query=f"History for", limit=1):
+    async for stalk in client.search_messages(bot, limit=2):
         if not stalk:
             await message.edit_text("**this person has never changed his name**")
             return
         elif stalk:
             await message.edit(stalk.text)
             await stalk.delete()
+            await lol.delete()
