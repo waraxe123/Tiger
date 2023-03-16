@@ -5,7 +5,7 @@ from pyrogram.types import *
 from pyrogram import *
 from TigerX.modules import ALL_MODULES
 from TigerX import clients, ids, app, aiosession
-from pykillerx.helper import *
+from pykillerx.helper.repo import *
 from config import *
 
 
