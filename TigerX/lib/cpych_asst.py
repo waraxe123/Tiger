@@ -11,7 +11,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from pykillerx.helper.content import *
-from config import SAVE_CONTENT
+from TigerX import SAVE_CONTENT
 
 async def verification_user(client, message, link):
     user_msg = f"""
