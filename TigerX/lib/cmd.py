@@ -5,7 +5,7 @@ from pyrogram import Client as ren
 from pyrogram.types import *
 import os 
 from os import getenv
-from config import PREFIXES
+from TigerX import PREFIXES
 
 handler = ["^"]
 

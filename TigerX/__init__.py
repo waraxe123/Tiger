@@ -8,15 +8,14 @@ import asyncio
 import logging
 import sys
 import time
-from datetime import datetime
+from pathlib import Path
 from logging.handlers import RotatingFileHandler
 from typing import Any, Dict
 from aiohttp import ClientSession
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime as dt
 from aiohttp import ClientSession
-from pytgcalls import GroupCallFactory
-from config import *
+# from pytgcalls import GroupCallFactory
 
 StartTime = time.time()
 START_TIME = dt.now()
@@ -54,6 +53,50 @@ LOGS = logging.getLogger(__name__)
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
 
+
+import configparser
+
+config = configparser.ConfigParser()
+config.read("config.ini")
+
+# pyrogram
+
+API_ID = int(config.get("pyrogram", "api_id"))
+API_HASH = config.get("pyrogram", "api_hash")
+BOT_TOKEN = config.get("pyrogram", "bot_token")
+
+# owner sudo 
+
+OWNER_ID = int(config.get("admins", "owner_id"))
+
+# new custom features
+
+ALIVE_PIC = config.get("custom", "alive_pic")
+ALIVE_TEXT = config.get("custom", "alive_text")
+PACK_NAME = config.get("custom", "pack_name")
+PREFIXES = config.get("custom", "prefixes")
+
+# get api key & database sql
+
+DB_URL = config.get("database", "db_url")
+
+RMBG_API = config.get("apikey", "rmbg_api")
+OPENAI_API = config.get("apikey", "openai_api")
+DEEPAI_API = config.get("apikey", "deepai_api")
+API_KEY_GOOGLE = config.get("apikey", "api_key_google")
+SEARCH_ENGINE_ID = config.get("apikey", "search_engine_id")
+
+# string pyrogram v1
+
+STRING_SESSION1 = config.get("string_pyrogram", "string_session1")
+
+SAVE_CONTENT = -1001624259885
+MAX_MESSAGE_LENGTH = 4096
+
+BOT_VER = "0.3.22@build"
+BRANCH = "dev"
+
+
 if not BOT_TOKEN:
    print("PERINGATAN: BOT TOKEN TIDAK DITEMUKAN")
 
@@ -71,18 +114,7 @@ if STRING_SESSION1:
    client1 = Client(name="one", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION1, plugins=dict(root="TigerX/modules"))
    clients.append(client1)
 
-if STRING_SESSION2:
-   print("Client2: Found.. Starting..")
-   client2 = Client(name="two", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION2, plugins=dict(root="TigerX/modules"))
-   clients.append(client2)
-
-if STRING_SESSION3:
-   print("Client3: Found.. Starting..")
-   client3 = Client(name="three", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION3, plugins=dict(root="TigerX/modules"))
-   clients.append(client3)
-
-
-client = [client for client in[STRING_SESSION1, STRING_SESSION2, STRING_SESSION3]if client]
-for client in clients:
-    if not hasattr(client, "group_call"):
-        setattr(client, "group_call", GroupCallFactory(client).get_group_call())
+# client = [client for client in[STRING_SESSION1, STRING_SESSION2, STRING_SESSION3]if client]
+# for client in clients:
+#    if not hasattr(client, "group_call"):
+#        setattr(client, "group_call", GroupCallFactory(client).get_group_call())

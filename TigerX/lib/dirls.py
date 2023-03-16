@@ -4,7 +4,6 @@ from TigerX import *
 from TigerX.lib import *
 from pyrogram import filters
 from pyrogram.types import Message
-from config import MAX_MESSAGE_LENGTH
 from pykillerx.helper.clear_string import clear_string
 from pykillerx.helper.check_size import get_directory_size
 

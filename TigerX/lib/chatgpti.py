@@ -6,7 +6,7 @@ import asyncio
 from pyrogram import *
 from pyrogram.types import *
 
-from config import OPENAI_API
+from TigerX import OPENAI_API
 
 from TigerX import *
 from TigerX.lib import *

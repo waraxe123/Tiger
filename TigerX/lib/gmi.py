@@ -20,7 +20,7 @@ from pyrogram.types import *
 from TigerX import *
 from TigerX.lib import *
 
-from config import API_KEY_GOOGLE, SEARCH_ENGINE_ID
+from TigerX import API_KEY_GOOGLE, SEARCH_ENGINE_ID
 
 search_params = {
     'q': '',

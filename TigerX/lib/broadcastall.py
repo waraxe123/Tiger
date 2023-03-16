@@ -15,8 +15,6 @@ from requests import get
 from TigerX import *
 from TigerX.lib import *
 
-from config import *
-
 from pykillerx import *
 from pykillerx.helper import *
 from pykillerx.blacklist import *
@@ -45,7 +43,7 @@ async def gcast_all(client, message):
             elif get_arg:
                 msg = get_arg(message)
             chat = dialog.chat.id
-            if chat not in BLACKLIST and chat not in GCAST_BLACKLIST:
+            if chat not in BLACKLIST:
                 try:
                     if message.reply_to_message:
                         await msg.copy(chat)
@@ -72,7 +70,7 @@ async def gforward_all(client, message):
             if message.reply_to_message:
                 msg = message.reply_to_message
             chat = dialog.chat.id
-            if chat not in BLACKLIST and chat not in GCAST_BLACKLIST:
+            if chat not in BLACKLIST:
                 try:
                     if message.reply_to_message:
                         await msg.forward(chat, disable_notification=True)

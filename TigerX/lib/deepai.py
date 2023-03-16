@@ -23,7 +23,7 @@ from pyrogram import *
 from TigerX import *
 from TigerX.lib import *
 
-from config import DEEPAI_API
+from TigerX import DEEPAI_API
 
 async def toonify(c, m):
     pro = await m.reply_text("`Whacking face cartoon.......`")
