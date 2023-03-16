@@ -12,7 +12,7 @@ async def sangmata_check(client, message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await m.reply_text(f"`Please specify a valid user!`")
+            await lol.edit_text(f"`Please specify a valid user!`")
             return
     bot = "@SangMata_beta_bot"
     await client.send_message(bot, f"/search_id {user.id}")
@@ -22,5 +22,5 @@ async def sangmata_check(client, message):
             await lol.edit_text("**this person has never changed his name**")
             return
         elif stalk:
-            await message.edit(stalk.text)
+            await lol.edit_text(stalk.text)
             await lol.delete()
