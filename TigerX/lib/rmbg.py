@@ -9,7 +9,7 @@
 # COPYRIGHT https://github.com/TeamKillerX/DarkWeb
 # CREATE CODING BY https://t.me/xtsea
 
-from config import RMBG_API
+from TigerX import RMBG_API
 from pyrogram.types import *
 from pyrogram import *
 from base64 import b64decode as hack
