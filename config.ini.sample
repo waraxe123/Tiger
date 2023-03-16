@@ -1,7 +1,10 @@
 [pyrogram]
 api_id =
 api_hash = 
-bot_token = 
+bot_token =
+
+[admins]
+owner_id = 
 
 [custom]
 alive_pic = 
