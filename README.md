@@ -25,8 +25,8 @@ Rendy@Ubuntu~ $ sudo apt update && sudo apt upgrade -y
 Rendy@Ubuntu~ $ git clone https://github.com/TeamKillerX/TigerX-Userbot && cd TigerX-Userbot
 Rendy@Ubuntu~ $ bash install.sh
 Rendy@Ubuntu~ $ pip3 install -r req *
-Rendy@Ubuntu~ $ cp sample_config.env config.env
-Rendy@Ubuntu~ $ nano config.env
+Rendy@Ubuntu~ $ cp sample_config.ini config.ini
+Rendy@Ubuntu~ $ nano config.ini
 Rendy@Ubuntu~ $ screen -S tiger
 Rendy@Ubuntu~ $ python3 -m TigerX
 # ctrl a + d 
