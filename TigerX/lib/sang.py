@@ -22,5 +22,5 @@ async def sangmata_check(client, message):
             await message.reply_text("**this person has never changed his name**")
             return
         elif stalk:
-            await client.send_message(m.chat.id, stalk.text, reply_to_message_id=message.id)
+            await client.send_message(message.chat.id, stalk.text, reply_to_message_id=message.id)
     await lol.delete()
