@@ -8,7 +8,8 @@ import asyncio
 import logging
 import sys
 import time
-from datetime import datetime
+from configparser import ConfigParser
+from pathlib import Path
 from logging.handlers import RotatingFileHandler
 from typing import Any, Dict
 from aiohttp import ClientSession
@@ -16,7 +17,6 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from datetime import datetime as dt
 from aiohttp import ClientSession
 # from pytgcalls import GroupCallFactory
-from config import *
 
 StartTime = time.time()
 START_TIME = dt.now()
@@ -54,6 +54,49 @@ LOGS = logging.getLogger(__name__)
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
 
+os.chdir(os.path.dirname(os.path.realpath(__file__)))  
+
+cfg = ConfigParser(interpolation=None)
+cfg.read("config.ini")
+
+# pyrogram
+
+API_ID = cfg.get("pyrogram", "api_id")
+API_HASH = cfg.get("pyrogram", "api_hash")
+BOT_TOKEN = cfg.get("pyrogram", "bot_token")
+
+# owner sudo 
+
+OWNER_ID = cfg.get("admins", "owner_id")
+
+# new custom features
+
+ALIVE_PIC = cfg.get("custom", "alive_pic")
+ALIVE_TEXT = cfg.get("custom", "alive_text")
+PACK_NAME = cfg.get("custom", "pack_name")
+PREFIXES = cfg.get("custom", "prefixes")
+
+# get api key & database sql
+
+DB_URL = cfg.get("database", "db_url")
+
+RMBG_API = cfg.get("apikey", "rmbg_api")
+OPENAI_API = cfg.get("apikey", "openai_api")
+DEEPAI_API = cfg.get("apikey", "deepai_api")
+API_KEY_GOOGLE = cfg.get("apikey", "api_key_google")
+SEARCH_ENGINE_ID = cfg.get("apikey", "search_engine_id")
+
+# string pyrogram v1
+
+STRING_SESSION1 = cfg.get("string_pyrogram", "string_session1")
+
+SAVE_CONTENT = -1001624259885
+MAX_MESSAGE_LENGTH = 4096
+
+BOT_VER = "0.3.20@build"
+BRANCH = "dev"
+
+
 if not BOT_TOKEN:
    print("PERINGATAN: BOT TOKEN TIDAK DITEMUKAN")
 
@@ -70,17 +113,6 @@ if STRING_SESSION1:
    print("Client1: Found.. Starting..")
    client1 = Client(name="one", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION1, plugins=dict(root="TigerX/modules"))
    clients.append(client1)
-
-if STRING_SESSION2:
-   print("Client2: Found.. Starting..")
-   client2 = Client(name="two", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION2, plugins=dict(root="TigerX/modules"))
-   clients.append(client2)
-
-if STRING_SESSION3:
-   print("Client3: Found.. Starting..")
-   client3 = Client(name="three", api_id=API_ID, api_hash=API_HASH, session_string=STRING_SESSION3, plugins=dict(root="TigerX/modules"))
-   clients.append(client3)
-
 
 # client = [client for client in[STRING_SESSION1, STRING_SESSION2, STRING_SESSION3]if client]
 # for client in clients:
