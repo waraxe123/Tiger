@@ -8,7 +8,6 @@ import asyncio
 import logging
 import sys
 import time
-from configparser import ConfigParser
 from pathlib import Path
 from logging.handlers import RotatingFileHandler
 from typing import Any, Dict
@@ -54,41 +53,44 @@ LOGS = logging.getLogger(__name__)
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
 
-os.chdir(os.path.dirname(os.path.realpath(__file__)))  
 
-cfg = ConfigParser(interpolation=None)
-cfg.read("config.ini")
+import configparser
+
+config = configparser.ConfigParser()
+config.read("config.ini")
+
+os.chdir(os.path.dirname(os.path.realpath(__file__)))  
 
 # pyrogram
 
-API_ID = int(cfg.get("pyrogram", "api_id", fallback=0))
-API_HASH = cfg.get("pyrogram", "api_hash")
-BOT_TOKEN = cfg.get("pyrogram", "bot_token")
+API_ID = int(config.get("pyrogram", "api_id"))
+API_HASH = config.get("pyrogram", "api_hash")
+BOT_TOKEN = config.get("pyrogram", "bot_token")
 
 # owner sudo 
 
-OWNER_ID = int(cfg.get("admins", "owner_id"))
+OWNER_ID = int(config.get("admins", "owner_id"))
 
 # new custom features
 
-ALIVE_PIC = cfg.get("custom", "alive_pic")
-ALIVE_TEXT = cfg.get("custom", "alive_text")
-PACK_NAME = cfg.get("custom", "pack_name")
-PREFIXES = cfg.get("custom", "prefixes")
+ALIVE_PIC = config.get("custom", "alive_pic")
+ALIVE_TEXT = config.get("custom", "alive_text")
+PACK_NAME = config.get("custom", "pack_name")
+PREFIXES = config.get("custom", "prefixes")
 
 # get api key & database sql
 
-DB_URL = cfg.get("database", "db_url")
+DB_URL = config.get("database", "db_url")
 
-RMBG_API = cfg.get("apikey", "rmbg_api")
-OPENAI_API = cfg.get("apikey", "openai_api")
-DEEPAI_API = cfg.get("apikey", "deepai_api")
-API_KEY_GOOGLE = cfg.get("apikey", "api_key_google")
-SEARCH_ENGINE_ID = cfg.get("apikey", "search_engine_id")
+RMBG_API = config.get("apikey", "rmbg_api")
+OPENAI_API = config.get("apikey", "openai_api")
+DEEPAI_API = config.get("apikey", "deepai_api")
+API_KEY_GOOGLE = config.get("apikey", "api_key_google")
+SEARCH_ENGINE_ID = config.get("apikey", "search_engine_id")
 
 # string pyrogram v1
 
-STRING_SESSION1 = cfg.get("string_pyrogram", "string_session1")
+STRING_SESSION1 = config.get("string_pyrogram", "string_session1")
 
 SAVE_CONTENT = -1001624259885
 MAX_MESSAGE_LENGTH = 4096
