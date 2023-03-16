@@ -23,4 +23,3 @@ async def sangmata_check(client, message):
             return
         elif stalk:
             await lol.edit_text(stalk.text)
-            await lol.delete()
