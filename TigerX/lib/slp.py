@@ -29,9 +29,15 @@ SLAP_LUCU_INDONESIA = [
 ]
 
 async def slap_funny_lol(c, m):
-    if m.reply_to_message and m.reply_to_message.from_user.username:
+    if m.reply_to_message and m.reply_to_message.from_user:
         username = m.reply_to_message.from_user.username
+        mention =  m.reply_to_message.from_user.mention
         slap_text = choice(SLAP_FUNNY_ENGLISH)
-        await c.send_message(m.chat.id, f"@{username}, {slap_text}")
+        if username is not None:
+            await c.send_message(m.chat.id, f"@{username}, {slap_text}")
+        elif mention:
+            await c.send_message(m.chat.id, f"{mention}, {slap_text}")
+        else:
+            return
     else:
         await m.reply_text("Please reply to a message to slap someone!")
