@@ -12,14 +12,15 @@ async def sangmata_check(client, message):
         try:
             user = await client.get_users(args)
         except Exception:
-            await lol.edit_text(f"`Please specify a valid user!`")
+            await message.reply_text(f"`Please specify a valid user!`")
             return
     bot = "@SangMata_beta_bot"
     await client.send_message(bot, f"/search_id {user.id}")
     await asyncio.sleep(2)
-    async for stalk in client.search_messages(bot, limit=3):
+    async for stalk in client.search_messages(bot, limit=0):
         if not stalk:
-            await lol.edit_text("**this person has never changed his name**")
+            await message.reply_text("**this person has never changed his name**")
             return
         elif stalk:
-            await lol.edit_text(stalk.text)
+            await client.send_message(m.chat.id, stalk.text, reply_to_message_id=message.id)
+    await lol.delete()
