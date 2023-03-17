@@ -323,7 +323,7 @@ SLAP_LUCU_INDONESIA = [
 async def truth_string(c, m):
     saya = (await c.get_users("me")).mention
     truth_random = choice(TRUTH)
-    await m.reply_text(f"{saya}, {truth_random})
+    await m.reply_text(f"{saya}, {truth_random}")
 
 async def dare_string(c, m):
     saya = (await c.get_users("me")).mention
