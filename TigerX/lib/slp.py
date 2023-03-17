@@ -319,11 +319,20 @@ SLAP_LUCU_INDONESIA = [
 
 # code by @xtsea
 
-
 async def truth_string(c, m):
-    saya = (await c.get_users("me")).mention
-    truth_random = choice(TRUTH)
-    await m.reply_text(f"{saya}, {truth_random}")
+    user = await c.get_users("me")
+    if user:
+        mention_user = user.mention
+        first_name = user.first_name
+    else:
+        return 
+    truth_random = random.choice(TRUTH)
+    if first_name:
+        await m.reply_text(f"{first_name}, {truth_random}")
+    elif mention_user:
+        await m.reply_text(f"{mention_user}, {truth_random}")
+    else:
+        await m.reply_text("Can't get the name.")
 
 async def dare_string(c, m):
     saya = (await c.get_users("me")).mention
