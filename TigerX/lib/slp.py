@@ -326,7 +326,7 @@ async def truth_string(c, m):
         first_name = user.first_name
     else:
         return 
-    truth_random = random.choice(TRUTH)
+    truth_random = choice(TRUTH)
     if first_name:
         await m.reply_text(f"{first_name}, {truth_random}")
     elif mention_user:
