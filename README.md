@@ -33,7 +33,7 @@ Rendy@Ubuntu~ $ python3 -m TigerX
 ```
 
 ## 💎 Example Plugins 💎
-* this module plugins : [Click Here](https://github.com/TeamKillerX/TigerX-Userbot/tree/main/TigerX/modules/plugins)
+* this module plugins : [Click Here](https://github.com/TeamKillerX/TigerX-Userbot/tree/dev/TigerX/modules/plugins)
 
 ```python
 from TigerX import *
@@ -47,7 +47,7 @@ async def hello_world_command(client, Client, message: Message):
 ```
 
 
-* this module lib : [Click Here](https://github.com/TeamKillerX/TigerX-Userbot/tree/main/lib)
+* this module lib : [Click Here](https://github.com/TeamKillerX/TigerX-Userbot/tree/dev/TigerX/lib)
 * you can add <code>__init__.py</code>
 * don't forget to add files `example.py`
 * like example : `from .example import *`
