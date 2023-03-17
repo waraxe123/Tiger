@@ -330,7 +330,7 @@ async def slap_template_ok(c, m):
         response_message = temp.format(user1=user1, user2=user2, item=item, hits=hit, throws=throw)
         await c.send_message(m.chat.id, response_message)
     else:
-        await message.reply_text("Please reply to a message to slap someone!")
+        await m.reply_text("Please reply to a message to slap someone!")
 
 
 
