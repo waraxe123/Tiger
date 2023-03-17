@@ -6,4 +6,4 @@ services:
         context: https://github.com/TeamKillerX/TigerX-Userbot.git#dev
       restart: on-failure
       env_file:
-        - config.env
+        - config.ini

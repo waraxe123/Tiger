@@ -319,6 +319,17 @@ SLAP_LUCU_INDONESIA = [
 
 # code by @xtsea
 
+
+async def truth_string(c, m):
+    saya = (await c.get_users("me")).mention
+    truth_random = choice(TRUTH)
+    await m.reply_text(f"{saya}, {truth_random}")
+
+async def dare_string(c, m):
+    saya = (await c.get_users("me")).mention
+    dare_random = choice(DARE)
+    await m.reply_text(f"{saya}, {dare_random}")
+
 async def slap_template_ok(c, m):
     user1 = (await c.get_users("me")).first_name
     if m.reply_to_message and m.reply_to_message.from_user:
@@ -330,7 +341,7 @@ async def slap_template_ok(c, m):
         response_message = temp.format(user1=user1, user2=user2, item=item, hits=hit, throws=throw)
         await c.send_message(m.chat.id, response_message)
     else:
-        await message.reply_text("Please reply to a message to slap someone!")
+        await m.reply_text("Please reply to a message to slap someone!")
 
 
 

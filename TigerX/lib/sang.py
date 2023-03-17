@@ -16,13 +16,15 @@ async def sangmata_check(client, message):
             return
     bot = "@SangMata_beta_bot"
     await client.send_message(bot, f"/search_id {user_id}")
-    await asyncio.sleep(2)
+    anak_bocah_coding = await message.reply_text("`Whacking I check you`")
+    await asyncio.sleep(5)
     async for stalk in client.search_messages(bot, limit=1):
         if not stalk:
             await message.reply_text("**This person has never changed their name**")
             return
         else:
             await client.send_message(message.chat.id, stalk.text, reply_to_message_id=message.id)
+            await anak_bocah_coding.delete()
             return
     await message.reply_text("**Timed out while searching for messages**")
 
