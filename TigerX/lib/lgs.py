@@ -7,12 +7,13 @@
 # All rights reserved. See COPYING, AUTHORS.
 #
 
+from TigerX import *
+from TigerX.lib import *
+
 import requests
 from PIL import Image, ImageDraw, ImageFont
 import glob
 from random import choice 
-from TigerX import *
-from TigerX.lib import *
 
 font_path = "/resources/fonts/Roboto-Bold.ttf" # this can replace other ttf : https://github.com/TeamKillerX/TigerX-Userbot/tree/test/resources/fonts
 font_size = 60
@@ -26,8 +27,12 @@ URL_IMAGE = [
 ]
 
 async def logo_write(client, message):
-    text = message.text.split(".logo_write ", 1)[1]
-    response = requests.get(URL_IMAGE)
+    if len(message.text.split(" ")) < 2:
+        await message.reply_text("Please provide text to write in the logo")
+        return
+
+    text = message.text.split(" ", 1)[1]
+    response = requests.get(choice(URL_IMAGE))
     img = Image.open(BytesIO(response.content))
     font = ImageFont.truetype(font_path, font_size)
 
