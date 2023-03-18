@@ -35,7 +35,7 @@ from TigerX.lib import *
 from pykillerx import *
 from pykillerx.helper.hacking import *
 from pykillerx.helper.tools import *
-from pykillerx.helper.sticker import *
+from pykillerx.helper.sticker import add_text_img, resize_media
 from pykillerx.helper import *
 from pykillerx.help import *
 

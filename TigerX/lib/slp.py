@@ -319,7 +319,7 @@ SLAP_LUCU_INDONESIA = [
 
 # code by @xtsea
 
-async def truth_string(c, m):
+async def truth_string_str(c, m):
     user = await c.get_users("me")
     if user:
         mention_user = user.mention
@@ -334,7 +334,7 @@ async def truth_string(c, m):
     else:
         await m.reply_text("Can't get the name.")
 
-async def dare_string(c, m):
+async def dare_string_str_2(c, m):
     user = await c.get_users("me")
     if user:
         mention_user = user.mention
@@ -349,7 +349,7 @@ async def dare_string(c, m):
     else:
         await m.reply_text("Can't get the name.")
 
-async def slap_template_ok(c, m):
+async def slap_template_fixed(c, m):
     user1 = (await c.get_users("me")).first_name
     if m.reply_to_message and m.reply_to_message.from_user:
         user2 = m.reply_to_message.from_user.first_name
@@ -363,8 +363,7 @@ async def slap_template_ok(c, m):
         await m.reply_text("Please reply to a message to slap someone!")
 
 
-
-async def slap_funny_lol(c, m):
+async def slap_funny_lol_fixed(c, m):
     if m.reply_to_message and m.reply_to_message.from_user:
         username = m.reply_to_message.from_user.username
         mention =  m.reply_to_message.from_user.mention
