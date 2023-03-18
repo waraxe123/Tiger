@@ -14,8 +14,15 @@ import requests
 from PIL import Image, ImageDraw, ImageFont
 import glob
 from random import choice 
+from io import BytesIO
 
-font_path = "/resources/fonts/Roboto-Bold.ttf" # this can replace other ttf : https://github.com/TeamKillerX/TigerX-Userbot/tree/test/resources/fonts
+# font_path = "/resources/fonts/Roboto-Bold.ttf" # this can replace other ttf : https://github.com/TeamKillerX/TigerX-Userbot/tree/test/resources/fonts
+
+font_url = "https://github.com/TeamkillerX/TigerX-Userbot/raw/test/resources/fonts/Roboto-Bold.ttf"
+response_font = requests.get(font_url)
+with open("Roboto-Bold.ttf", "wb") as f:
+    f.write(response_font.content)
+
 font_size = 60
 font_color = (255, 255, 255)
 
@@ -34,7 +41,7 @@ async def logo_write(client, message):
     text = message.text.split(" ", 1)[1]
     response = requests.get(choice(URL_IMAGE))
     img = Image.open(BytesIO(response.content))
-    font = ImageFont.truetype(font_path, font_size)
+    font = ImageFont.truetype("Roboto-Bold.ttf", font_size)
 
     draw = ImageDraw.Draw(img)
     text_size = draw.textsize(text, font)
