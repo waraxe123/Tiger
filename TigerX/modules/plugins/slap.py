@@ -1,5 +1,6 @@
 from TigerX import *
 from TigerX.lib.slp import slap_template_fixed, slap_funny_lol_fixed
+from TigerX.lib import *
 
 @randydev(command("slap", cmd) & owner)
 async def slap_english_command(c: Client, m: Message):
