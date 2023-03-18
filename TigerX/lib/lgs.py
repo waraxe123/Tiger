@@ -263,6 +263,9 @@ LOGO_LINKS = [
 ]
 
 async def logo_write(client, message):
+    if len(message.command) == 1:
+        await m.reply_text(f"usage: `+{message.command[0]} cool**")
+        return
     pro = await message.reply_text("`Prossing......`")
     try:
         text = message.text.split(" ", 1)[1]
@@ -272,7 +275,7 @@ async def logo_write(client, message):
         image_widthz, image_heightz = img.size
         fnt = glob.glob("resources/fonts/*")
         randf = choice(fnt)
-        font = ImageFont.truetype(randf, 120)
+        font = ImageFont.truetype(randf, 75)
         w, h = draw.textsize(text, font=font)
         h += int(h * 0.21)
         image_width, image_height = img.size
@@ -300,6 +303,9 @@ async def logo_write(client, message):
         if os.path.exists(fname):
             os.remove(fname)
     except Exception:
+        if len(message.command) == 1:
+            await m.reply_text(f"usage: `+{message.command[0]} cool**")
+            return
         pro = await message.reply_text("`Prossing......`")
         text = message.text.split(" ", 1)[1]
         randc = choice(LOGO_LINKS)
@@ -308,7 +314,7 @@ async def logo_write(client, message):
         image_widthz, image_heightz = img.size
         fnt = glob.glob("/resources/fonts/*")
         randf = choice(fnt)
-        font = ImageFont.truetype(randf, 120)
+        font = ImageFont.truetype(randf, 75)
         w, h = draw.textsize(text, font=font)
         h += int(h * 0.21)
         image_width, image_height = img.size
