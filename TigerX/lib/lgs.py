@@ -14,7 +14,7 @@ from random import choice
 from TigerX import *
 from TigerX.lib import *
 
-font_path = choice(glob.glob("/resources/fonts/*.ttf"))
+font_path = "/resources/fonts/Roboto-Bold.ttf" # this can replace other ttf : https://github.com/TeamKillerX/TigerX-Userbot/tree/test/resources/fonts
 font_size = 60
 font_color = (255, 255, 255)
 
@@ -27,8 +27,7 @@ URL_IMAGE = [
 
 async def logo_write(client, message):
     text = message.text.split(".logo_write ", 1)[1]
-    random_url = choice(URL_IMAGE)
-    response = requests.get(random_url)
+    response = requests.get(URL_IMAGE)
     img = Image.open(BytesIO(response.content))
     font = ImageFont.truetype(font_path, font_size)
 
