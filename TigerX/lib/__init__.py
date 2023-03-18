@@ -42,3 +42,5 @@ from .csur import *
 from .sys import *
 from .slp import *
 from .sang import *
+from .lsric import *
+from .lgs import *

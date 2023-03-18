@@ -42,7 +42,7 @@ from TigerX.lib import *
 from pykillerx.help import add_command_help 
 
 @randydev(command("example", cmd) & owner)
-async def hello_world_command(client, Client, message: Message):
+async def hello_world_command(client: Client, message: Message):
     await hello_world(client, message)
 ```
 
@@ -59,6 +59,25 @@ async def hello_world(client, message):
     await client.send_message(message.chat.id, "Hello World")
 ```
 * Code : [pull requests](https://github.com/TeamKillerX/TigerX-Userbot/pulls)
+
+### Obtaining `sp_dc` and `sp_key` cookies
+
+Spotcast uses two cookies to authenticate against Spotify in order to have access to the required services.
+
+To obtain the cookies, these different methods can be used:
+
+#### Chrome based browser
+
+##### Chrome web console
+
+1. Open a new __Incognito window__ at [`https://open.spotify.com`](https://open.spotify.com) and login to Spotify.
+2. Press `Command+Option+I` (Mac) or `Control+Shift+I` or `F12`. This should open the developer tools menu of your browser.
+3. Go into the `application` section.
+4. In the menu on the left go int `Storage/Cookies/open.spotify.com`.
+5. Find the `sp_dc` and `sp_key` and copy the values.
+6. Close the window without logging out (Otherwise the cookies are made invalid).
+
+<img src="https://raw.githubusercontent.com/fondberg/spotcast/master/images/cookies_chrome_2.png"></img>
 
 ## 📜 License 📜
 

@@ -20,7 +20,11 @@ rmbg_api =
 openai_api = 
 deepai_api = 
 api_key_google = 
-search_engine_id = 
+search_engine_id =
+
+[spotify]
+sp_dc =
+sp_key =
 
 [string_pyrogram]
 string_session1 = 
