@@ -98,7 +98,7 @@ STRING_SESSION1 = config.get("string_pyrogram", "string_session1")
 SAVE_CONTENT = -1001624259885
 MAX_MESSAGE_LENGTH = 4096
 
-BOT_VER = "0.3.23@build"
+BOT_VER = "0.3.25@build"
 BRANCH = "dev"
 
 
