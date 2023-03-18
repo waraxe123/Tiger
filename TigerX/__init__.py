@@ -86,6 +86,11 @@ DEEPAI_API = config.get("apikey", "deepai_api")
 API_KEY_GOOGLE = config.get("apikey", "api_key_google")
 SEARCH_ENGINE_ID = config.get("apikey", "search_engine_id")
 
+# lyrics
+
+SP_DC = config.get("spotify", "sp_dc")
+SP_KEY = config.get("spotify", "sp_key")
+
 # string pyrogram v1
 
 STRING_SESSION1 = config.get("string_pyrogram", "string_session1")
@@ -93,7 +98,7 @@ STRING_SESSION1 = config.get("string_pyrogram", "string_session1")
 SAVE_CONTENT = -1001624259885
 MAX_MESSAGE_LENGTH = 4096
 
-BOT_VER = "0.3.22@build"
+BOT_VER = "0.3.23@build"
 BRANCH = "dev"
 
 
