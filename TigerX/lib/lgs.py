@@ -19,9 +19,9 @@ font_size = 60
 font_color = (255, 255, 255)
 
 URL_IMAGE = [
-   "https://github.com/TeamkillerX/TigerX-Userbot/raw/test/resources/image/hd2.jpg",
-   "https://github.com/TeamkillerX/TigerX-Userbot/raw/test/resources/image/images.jpeg",
-   "https://github.com/TeamkillerX/TigerX-Userbot/raw/test/resources/image/peakpx.jpg",
+  "https://github.com/TeamkillerX/TigerX-Userbot/raw/test/resources/image/hd2.jpg",
+  "https://github.com/TeamkillerX/TigerX-Userbot/raw/test/resources/image/images.jpeg",
+  "https://github.com/TeamkillerX/TigerX-Userbot/raw/test/resources/image/peakpx.jpg",
 
 ]
 
