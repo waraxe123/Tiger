@@ -264,7 +264,7 @@ LOGO_LINKS = [
 
 async def logo_write(client, message):
     if len(message.command) == 1:
-        await m.reply_text(f"usage: `+{message.command[0]} cool**")
+        await message.reply_text(f"usage: `+{message.command[0]} cool**")
         return
     pro = await message.reply_text("`Prossing......`")
     try:
@@ -304,7 +304,7 @@ async def logo_write(client, message):
             os.remove(fname)
     except Exception:
         if len(message.command) == 1:
-            await m.reply_text(f"usage: `+{message.command[0]} cool**")
+            await message.reply_text(f"usage: `+{message.command[0]} cool**")
             return
         pro = await message.reply_text("`Prossing......`")
         text = message.text.split(" ", 1)[1]
