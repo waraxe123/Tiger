@@ -263,6 +263,7 @@ LOGO_LINKS = [
 ]
 
 async def logo_write(client, message):
+    pro = await message.reply_text("`Prossing......`")
     try:
         text = message.text.split(" ", 1)[1]
         randc = choice(LOGO_LINKS)
@@ -288,14 +289,18 @@ async def logo_write(client, message):
         )
         fname = "TigerX.png"
         img.save(fname, "png")
+        kk = await pro.edit_text("`Uploading logo.....`")
         await client.send_photo(
             message.chat.id,
             photo=fname,
-            caption=f"Create logo By TigerX",
+            reply_to_message_id=message.id,
+            caption=f"Create logo By {client.me.mention}",
         )
+        await kk.delete()
         if os.path.exists(fname):
             os.remove(fname)
     except Exception:
+        pro = await message.reply_text("`Prossing......`")
         text = message.text.split(" ", 1)[1]
         randc = choice(LOGO_LINKS)
         img = Image.open(BytesIO(requests.get(randc).content))
@@ -320,10 +325,13 @@ async def logo_write(client, message):
         )
         fname = "TigerX.png"
         img.save(fname, "png")
+        kk = await pro.edit_text("`Uploading logo.....`")
         await client.send_photo(
             message.chat.id,
             photo=fname,
-            caption=f"Create logo by TigerX",
+            reply_to_message_id=message.id,
+            caption=f"Create logo by {client.me.mention}",
         )
+        await kk.delete()
         if os.path.exists(fname):
             os.remove(fname)
