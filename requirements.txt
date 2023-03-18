@@ -40,3 +40,4 @@ numpy
 opencv-python
 psutil
 pymediainfo
+spotify_token
