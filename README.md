@@ -42,7 +42,7 @@ from TigerX.lib import *
 from pykillerx.help import add_command_help 
 
 @randydev(command("example", cmd) & owner)
-async def hello_world_command(client, Client, message: Message):
+async def hello_world_command(client: Client, message: Message):
     await hello_world(client, message)
 ```
 
