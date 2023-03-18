@@ -335,9 +335,19 @@ async def truth_string(c, m):
         await m.reply_text("Can't get the name.")
 
 async def dare_string(c, m):
-    saya = (await c.get_users("me")).mention
+    user = await c.get_users("me")
+    if user:
+        mention_user = user.mention
+        first_name = user.first_name
+    else:
+        return 
     dare_random = choice(DARE)
-    await m.reply_text(f"{saya}, {dare_random}")
+    if first_name:
+        await m.reply_text(f"{first_name}, {dare_random}")
+    elif mention_user:
+        await m.reply_text(f"{mention_user}, {dare_random}")
+    else:
+        await m.reply_text("Can't get the name.")
 
 async def slap_template_ok(c, m):
     user1 = (await c.get_users("me")).first_name
