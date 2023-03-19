@@ -20,4 +20,10 @@ async def cat_image(c, m):
     url_cat = requests.get(API_CAT_IMAGE)
     urls = [url_cat.json()[0]['url'] for i in range(1)]
     for url in urls:
+        this_wtf = await m.reply_text("`Uploading....`")
         await m.reply_photo(photo=url)
+    try:
+        await this_wtf.delete()
+    except Exception:
+        pass
+       
