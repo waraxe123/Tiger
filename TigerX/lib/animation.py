@@ -438,10 +438,29 @@ async def police_animation(client, message):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 12])
 
+GAMBAR_KONTL = """
+⣠⡶⠚⠛⠲⢄⡀
+⣼⠁ ⠀⠀⠀ ⠳⢤⣄
+⢿⠀⢧⡀⠀⠀⠀⠀⠀⢈⡇
+⠈⠳⣼⡙⠒⠶⠶⠖⠚⠉⠳⣄
+⠀⠀⠈⣇⠀⠀⠀⠀⠀⠀⠀⠈⠳⣄
+⠀⠀⠀⠘⣆ ⠀⠀⠀⠀ ⠀⠈⠓⢦⣀
+⠀⠀⠀⠀⠈⢳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠲⢤
+⠀⠀⠀⠀⠀⠀⠙⢦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧
+⠀⠀⠀⠀⠀⠀⠀⡴⠋⠓⠦⣤⡀⠀⠀⠀⠀⠀⠀⠀⠈⣇
+⠀⠀⠀⠀⠀⠀⣸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡄
+⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇
+⠀⠀⠀⠀⠀⠀⢹⡄⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃
+⠀⠀⠀⠀⠀⠀⠀⠙⢦⣀⣳⡀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠏
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⢦⣀⣀⣀⣀⣠⡴⠚⠁⠉⠉⠉
+"""
 
+async def penis_tolol(client, message):
+    if message.forward_from:
+        return
+    await message.edit(GAMBAR_KONTL)
 
-
-async def penis_lol(client, message):
+async def bye_prank(client, message):
     if message.forward_from:
         return
     await message.edit("────██──────▀▀▀██\n"
