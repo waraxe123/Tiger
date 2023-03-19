@@ -340,3 +340,16 @@ async def whatsapp_hack(client, message):
         await asyncio.sleep(animation_interval)
         await message.edit(animation_chars[i % 15])
 
+
+
+async def penis_lol(client, message):
+    if message.forward_from:
+        return
+    await message.edit("────██──────▀▀▀██\n"
+                       "──▄▀█▄▄▄─────▄▀█▄▄▄\n"
+                       "▄▀──█▄▄──────█─█▄▄\n"
+                       "─▄▄▄▀──▀▄───▄▄▄▀──▀▄\n"
+                       "─▀───────▀▀─▀───────▀▀\n`Kabur Ah, Banyak Anak Haram disini, Awowkowkwk..`")
+
+
+
