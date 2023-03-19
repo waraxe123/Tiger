@@ -1,7 +1,7 @@
 from time import sleep
 
 async def typewriter(client, message):
-    typew = message.text.split(" ", 1)
+    typew = await message.reply_text("your prossing...")
     await typew.edit_text(f"{client.me.mention}, Berusaha Menyantet Jamet Ini`")
     sleep(2)
     await typew.edit("`Mencari Nama Jamet Ini...`")
