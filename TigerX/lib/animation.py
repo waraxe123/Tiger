@@ -313,7 +313,7 @@ async def typewriter(client, message):
     await typew.edit("`Target Berhasil Tersantet Online:v`")
 
 
-async def _whatsapp_hack(client, message):
+async def whatsapp_hack(client, message):
     if message.forward_from:
         return
 
