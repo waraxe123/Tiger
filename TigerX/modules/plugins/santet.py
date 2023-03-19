@@ -7,4 +7,4 @@ async def santet_lu_fix(client: Client, message: Message):
 
 @randydev(command("whatsapp", cmd) & owner)
 async def wa_lu_fix(client: Client, message: Message):
-    await _whatsapp_hack(client, message)
+    await whatsapp_hack(client, message)
