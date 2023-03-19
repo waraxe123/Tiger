@@ -11,6 +11,6 @@ async def user_premium(c, m):
              return
         try: 
              await m.reply_text(out)
-         except Exception as e:
+        except Exception as e:
              await m.reply_text(f"{e}")
              return    
