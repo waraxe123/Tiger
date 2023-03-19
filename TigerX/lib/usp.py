@@ -3,7 +3,7 @@ from TigerX.lib import *
 
 async def user_premium(c, m):
     out = ""
-    async for mr in c.get_chat_members(m.chat.id)
+    async for mr in c.get_chat_members(m.chat.id):
         if mr.user.is_premium:
              out+= mr.user.mention + "\n"
         else:
