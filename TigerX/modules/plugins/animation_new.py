@@ -1,6 +1,8 @@
 from TigerX import *
 from TigerX.lib import *
 
+from pykillerx.help import *
+
 @randydev(command("santet", cmd) & owner)
 async def santet_lu_fix(client: Client, message: Message):
     await typewriter(client, message)
@@ -32,3 +34,32 @@ async def kontol_lu_fix(client: Client, message: Message):
 @randydev(command(["bye"], cmd) & owner)
 async def leave_lu_fix(client: Client, message: Message):
     await bye_prank(client, message)
+
+@randydev(command(["suicide"], cmd) & owner)
+async def bundir_lu_fix(client: Client, message: Message):
+    await bundir_ghosting(client, message)
+
+@randydev(command(["snake"], cmd) & owner)
+async def ular_lu_fix(client: Client, message: Message):
+    await ular_kaget(client, message)
+
+@randydev(command(["y"], cmd) & owner)
+async def jembol_lu_fix(client: Client, message: Message):
+    await jembol_like(client, message)
+
+add_command_help(
+    "animation",
+    [
+        ["santet", "usage: "],
+        ["whatsapp", "usage: "],
+        ["macos", "usage: "],
+        ["police", "usage: "],
+        ["linux", "usage: "],
+        ["hack", "usage: "],
+        [f"kontol or .dick ", "usage: "],
+        ["bye", "usage: prank left"],
+        ["suicide", "usage: "],
+        ["snake", "usage: "],
+        ["y", "usage: like"],
+    ],
+)
