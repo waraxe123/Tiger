@@ -28,3 +28,7 @@ async def hacker_lu_fix(client: Client, message: Message):
 @randydev(command(["kontol", "dick"], cmd) & owner)
 async def kontol_lu_fix(client: Client, message: Message):
     await penis_tolol(client, message)
+
+@randydev(command(["bye"], cmd) & owner)
+async def leave_lu_fix(client: Client, message: Message):
+    await bye_prank(client, message)
