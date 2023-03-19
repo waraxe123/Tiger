@@ -389,7 +389,7 @@ async def linux_hacker(client, message):
 
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 11])
+        await message.edit(animation_chars[i % 11])
 
 async def hacker_user(client, message):
     if message.forward_from:
@@ -412,7 +412,7 @@ async def hacker_user(client, message):
 
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 11])
+        await message.edit(animation_chars[i % 11])
 
 async def police_animation(client, message):
     if message.forward_from:
@@ -436,7 +436,7 @@ async def police_animation(client, message):
 
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 12])
+        await message.edit(animation_chars[i % 12])
 
 GAMBAR_KONTL = """
 ⣠⡶⠚⠛⠲⢄⡀
@@ -468,6 +468,3 @@ async def bye_prank(client, message):
                        "▄▀──█▄▄──────█─█▄▄\n"
                        "─▄▄▄▀──▀▄───▄▄▄▀──▀▄\n"
                        "─▀───────▀▀─▀───────▀▀\n`Kabur Ah, Banyak Anak Haram disini, Awowkowkwk..`")
-
-
-
