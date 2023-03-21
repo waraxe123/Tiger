@@ -47,6 +47,10 @@ async def ular_lu_fix(client: Client, message: Message):
 async def jembol_lu_fix(client: Client, message: Message):
     await jembol_like(client, message)
 
+@randydev(command(["cinta"], cmd) & owner)
+async def cinta_lu_fix(client: Client, message: Message):
+    await cinta_goblok(client, message)
+
 add_command_help(
     "animation",
     [
@@ -61,5 +65,6 @@ add_command_help(
         ["suicide", "usage: "],
         ["snake", "usage: "],
         ["y", "usage: like"],
+        ["cinta", "usage: "],
     ],
 )

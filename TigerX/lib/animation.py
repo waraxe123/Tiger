@@ -594,3 +594,29 @@ async def jembol_like(client, message):
                        "▓▓▓▓▓▓█‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡█\n"
                        "▓▓▓▓▓▓█████‡‡‡‡‡‡‡‡‡‡‡‡██\n"
                        "█████‡‡‡‡‡‡‡██████████\n")
+
+async def cinta_goblok(client, message):
+    if message.forward_from:
+        return
+
+    animation_interval = 2
+    animation_ttl = range(0, 11)
+    animation_chars = [
+        "`Connecting Ke Server Cinta`",
+        "`Mencari Target Cinta`",
+        "`Mengirim Cintaku.. 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Mengirim Cintaku.. 4%\n█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Mengirim Cintaku.. 8%\n██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Mengirim Cintaku.. 20%\n█████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Mengirim Cintaku.. 36%\n█████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Mengirim Cintaku.. 52%\n█████████████▒▒▒▒▒▒▒▒▒▒▒▒ `",
+        "`Mengirim Cintaku.. 84%\n█████████████████████▒▒▒▒ `",
+        "`Mengirim Cintaku.. 100%\n█████████CINTAKU███████████ `",
+        f"`Cintaku Sekarang Sepenuhnya Terkirim Padamu, Dan Sekarang Aku Sangat Mencintai Mu, I Love You 💞`"]
+
+    for i in animation_ttl:
+        await asyncio.sleep(animation_interval)
+        await message.edit(animation_chars[i % 11])
+
+
+
