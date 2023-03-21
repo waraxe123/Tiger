@@ -1,5 +1,8 @@
 # credits @xtsea
 
+from TigerX import *
+from TigerX.lib import *
+
 async def toxic_1(client, message):
     if message.forward_from:
         return
