@@ -1,6 +1,8 @@
 from TigerX import *
 from TigerX.lib import *
 
+from pykillerx.help import add_command_help
+
 @randydev(command("war", cmd) & owner)
 async def war_goblok(client: Client, message: Message):
     await toxic_1(client, message)
@@ -68,3 +70,28 @@ async def t_goblok(client: Client, message: Message):
 @randydev(command("u", cmd) & owner)
 async def u_goblok(client: Client, message: Message):
     await toxic_17(client, message)
+
+add_command_help(
+    "toxic",
+    [
+        ["war", "usage: "],
+        ["dih", "usage: "],
+        ["gembel", "usage: "],
+        ["sokap", "usage: "],
+        ["ded", "usage: "],
+        ["caper", "usage: "],
+        ["lo", "usage: "],
+        ["woi", "usage: "],
+        ["ngatur", "usage: "],
+        ["ubot", "usage: "],
+        ["d", "usage: "],
+        ["e", "usage: "],
+        ["f", "usage: "],
+        ["i", "usage: "],
+        ["q", "usage: "],
+        ["t", "usage: "],
+        ["u", "usage: "],
+
+    ],  
+)
+
