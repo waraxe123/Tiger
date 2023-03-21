@@ -59,7 +59,7 @@ async def f_goblok(client: Client, message: Message):
 async def i_goblok(client: Client, message: Message):
     await toxic_fixed14(client, message)
 
-@randydev(command("q", cmd) & owner)
+@randydev(command("qi", cmd) & owner)
 async def q_goblok(client: Client, message: Message):
     await toxic_fixed15(client, message)
 
@@ -77,7 +77,7 @@ add_command_help(
         ["war", "usage: "],
         ["dih", "usage: "],
         ["gembel", "usage: "],
-        ["sokap", "usage: "],
+        ["sokab", "usage: "],
         ["ded", "usage: "],
         ["caper", "usage: "],
         ["lo", "usage: "],
@@ -88,7 +88,7 @@ add_command_help(
         ["e", "usage: "],
         ["f", "usage: "],
         ["i", "usage: "],
-        ["q", "usage: "],
+        ["qi", "usage: "],
         ["t", "usage: "],
         ["u", "usage: "],
 
