@@ -16,4 +16,16 @@ async def sysinfo(c, m):
              await c.send_photo(chat_id, carbon, caption=f"Carbonised by {c.me.mention}")
          except Exception as e:
              await m.reply_text(str(e))
-             return 
+             return
+
+async def send_photo_or_video(c, m):
+    chat_id = m.chat.id
+    link = (m.text.split(None, 1)[1] if len(m.command) != 1 else None)
+    if not link:
+        await m.reply_text("for example, this telegraph link can send mp4")
+        return
+    send_other = c.send_video if link.endswith(".mp4") else c.send_photo
+    try:
+        await send_other(m.chat.id, link)
+    except Exception as e:
+        await m.reply_text(str(e))
