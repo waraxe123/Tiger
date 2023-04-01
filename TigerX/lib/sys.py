@@ -21,13 +21,12 @@ async def sysinfo(c, m):
 
 async def send_photo_or_video(c, m):
     chat_id = m.chat.id
-    link = (m.text.split(None, 1)[1] if len(m.command) != 1 else None)
-    link_message = m.reply_to_message
-    link_new = link_message.text if link_message else None
-    if not link or not link_new:
+    link = (m.text.split(None, 1)[1] if len(m.command) != 1 else None or (m.reply_to_message.text if m.reply_to_message else None))
+    link_new = m.reply_to_message.text if m.reply_to_message and "https://" in m.reply_to_message.text else None
+    if not link:
         await m.reply_text("for example, this telegraph link can send mp4")
         return
-    if "https://" in link_new:
+    if link_new:
         send_other = c.send_video if link_new.endswith(".mp4") else c.send_photo
         links = link_new
     else:
@@ -37,4 +36,3 @@ async def send_photo_or_video(c, m):
         await send_other(m.chat.id, links)
     except Exception as e:
         await m.reply_text(str(e))
-
