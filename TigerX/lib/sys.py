@@ -24,7 +24,7 @@ async def send_photo_or_video(c, m):
     link = (m.text.split(None, 1)[1] if len(m.command) != 1 else None)
     link_message = m.reply_to_message
     link_new = link_message.text if link_message else None
-    if not link or not link_message:
+    if not link or not link_new:
         await m.reply_text("for example, this telegraph link can send mp4")
         return
     if "https://" in link_new:
