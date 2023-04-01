@@ -10,5 +10,5 @@ async def take_corret(client, message):
     else:
         try:
             await take_this
-        except Exception e:
+        except Exception as e:
             await message.reply_text(str(e))
