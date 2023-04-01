@@ -6,17 +6,11 @@ import asyncio
 
 async def sysinfo(c, m):
     chat_id = m.chat.id
-    sleep_seconds = asyncio.sleep(5) if asyncio.sleep(2) else None
     install_system = os.system("apt-get install -y neofetch") if os else None
     if install_system:
          await install_system
     else:
          await m.reply_text("already installed neofetch")
-         return
-    if sleep_seconds:
-         await sleep_seconds
-    else:
-         pass
          return
     sysinfo = (await shell_exec("neofetch | sed 's/\x1B\\[[0-9;\\?]*[a-zA-Z]//g'"))[0]
     carbon = await make_carbon(sysinfo)
