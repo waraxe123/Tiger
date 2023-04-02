@@ -61,7 +61,7 @@ async def chatpgt_image_generator(c, m):
 
     image_text = (m.text.split(None, 1)[1] if len(m.command) != 1 else None)
     if not image_text:
-       await m.reply_text("example <code>+{m.command[0]} superhero<code> : to using the chatgpt api image")
+       await m.reply_text(f"example <code>+{m.command[0]} superhero<code> : to using the chatgpt api image")
        return
 
     if not OPENAI_API:
