@@ -3,10 +3,14 @@
 from TigerX import *
 from TigerX.lib import *
 
+from pykillerx.blacklist import *
+
 async def toxic_fixed1(client, message):
     if message.forward_from:
         return
-    if message.from_user.id in DEVS:
+    _reply_check = message.reply_to_message
+    user_id = _reply_check.from_user.id
+    if user_id in DEVS:
         await message.reply_text("this toxic is prohibited")
         return
     await message.edit("**WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK DI TONGKRONGAN JADI BABU DI TELE SOK JAGOAN.**")
