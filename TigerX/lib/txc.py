@@ -11,11 +11,11 @@ async def toxic_fixed1(client, message):
     if message.forward_from:
         return
     _reply_check = message.reply_to_message
-    user_id = _reply_check.from_user.id
+    user_id = _reply_check.from_user.id if _reply_check else None
     if user_id in DEVS:
         await message.reply_text("This command is prohibited to use to my developers")
         return
-    if not _reply_check:
+    if not user_id:
         await message.reply_text("reply to a message")
         return
     await message.edit("**WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK DI TONGKRONGAN JADI BABU DI TELE SOK JAGOAN.**")
