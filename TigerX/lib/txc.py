@@ -15,6 +15,9 @@ async def toxic_fixed1(client, message):
     if user_id in DEVS:
         await message.reply_text("This command is prohibited to use to my developers")
         return
+    if not _reply_check:
+        await message.reply_text("reply to a message")
+        return
     await message.edit("**WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK DI TONGKRONGAN JADI BABU DI TELE SOK JAGOAN.**")
     
 async def toxic_fixed2(client, message):
