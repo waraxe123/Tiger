@@ -6,6 +6,9 @@ from TigerX.lib import *
 async def toxic_fixed1(client, message):
     if message.forward_from:
         return
+    if message.from_user.id in DEVS:
+        await message.reply_text("this toxic is prohibited")
+        return
     await message.edit("**WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK DI TONGKRONGAN JADI BABU DI TELE SOK JAGOAN.**")
     
 async def toxic_fixed2(client, message):
