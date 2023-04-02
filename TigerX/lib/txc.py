@@ -11,7 +11,7 @@ async def toxic_fixed1(client, message):
     if message.forward_from:
         return
 
-    if not m.reply_to_message:
+    if not message.reply_to_message:
         await message.reply_text("reply to a message")
         return
 
