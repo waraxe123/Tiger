@@ -7,20 +7,17 @@ from pykillerx.blacklist import *
 
 # can you just copy the module here
 
-async def why_blacklist_reason(message):
+def why_blacklist_reason(message):
     _reply_check = message.reply_to_message
     user_id = _reply_check.from_user.id
     if user_id in DEVS:
-        await message.reply_text("This command is prohibited to use to my developers")
-        return
 
 async def toxic_fixed1(client, message):
     if message.forward_from:
         return
-    try:
-        await why_blacklist_reason(message)
-    except Exception:
-        pass
+    if why_blacklist_reason(message):
+        await message.reply_text("This command is prohibited to use to my developers")
+        return
     await message.edit("**WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK DI TONGKRONGAN JADI BABU DI TELE SOK JAGOAN.**")
     
 async def toxic_fixed2(client, message):
