@@ -18,6 +18,7 @@ async def toxic_fixed1(client, message):
     if message.forward_from:
         return
     await why_blacklist_reason(message)
+    return 
     await message.edit("**WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK DI TONGKRONGAN JADI BABU DI TELE SOK JAGOAN.**")
     
 async def toxic_fixed2(client, message):
