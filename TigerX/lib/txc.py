@@ -10,13 +10,13 @@ from pykillerx.blacklist import *
 async def toxic_fixed1(client, message):
     if message.forward_from:
         return
-    _reply_check = message.reply_to_message.from_user or message.reply_to_message
-    if _reply_check.from_user:
-        user_id = _reply_check.from_user.id
-        pass
-    if not _reply_check:
+
+    if not m.reply_to_message:
         await message.reply_text("reply to a message")
         return
+
+    _reply_check = message.reply_to_message
+    user_id = _reply_check.from_user.id if _reply_check.from_user else None
     if user_id in DEVS:
         await message.reply_text("This command is prohibited to use to my developers")
         return
