@@ -18,6 +18,10 @@ from pykillerx.help import *
 async def nothing(client: Client, message: Message):
     await copy_message(client, message)
 
+@randydev(command("take", cmd) & owner)
+async def lmao_this(client: Client, message: Message):
+    await take_corret(client, message)
+
 add_command_help(
     "copy",
     [
