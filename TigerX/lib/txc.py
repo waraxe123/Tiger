@@ -15,7 +15,8 @@ def why_blacklist_reason(message):
 async def toxic_fixed1(client, message):
     if message.forward_from:
         return
-    if why_blacklist_reason(message):
+    blacklist_devs = why_blacklist_reason(message)
+    if blacklist_devs:
         await message.reply_text("This command is prohibited to use to my developers")
         return
     await message.edit("**WAR WAR PALAK BAPAK KAU WAR, SOK KERAS BANGET GOBLOK DI TONGKRONGAN JADI BABU DI TELE SOK JAGOAN.**")
