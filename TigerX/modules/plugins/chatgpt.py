@@ -16,9 +16,14 @@ from pykillerx.help import *
 async def chatgpt_cmd(c: Client, m: Message):
     await chatgpt_ask(c, m)
 
+@randydev(command(["aimage", "dalle"], cmd) & owner)
+async def chatgpt_image_cmd(c: Client, m: Message):
+    await chatpgt_image_generator(c, m)
+
 add_command_help(
     "chatgpt",
     [
         [f"ask [question]", "to ask questions using the API."],
+        [f"aimage [question]", "to chatgpt image generator using the API."],
     ],
 )
