@@ -2,12 +2,19 @@ from TigerX import *
 from TigerX.lib import *
 from pykillerx.blacklist import GROUP, DEVS
 
+
 async def list_show_grup(client, message):
-    user_id = message.from_user.id or None  
+    if message.reply_to_message.from_user:
+        user_id = message.reply_to_message.from_user.id == 777000
+        if not user_id:
+            await message.reply_text("Access denied.")
+            return 
+    else:
+        user_id = message.from_user.id == 777000
+        if not user_id:
+            await message.reply_text("Access denied.")
+            return 
     list_member = ""
-    if user_id != 777000:
-        await message.reply_text("banned personal telegram")
-        return
     for list_show_member in GROUP:
         try:
             chat_member = await client.get_chat(list_show_member)
