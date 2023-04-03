@@ -12,4 +12,4 @@ async def list_show_grup(client, message):
               list_member += f"{list_member.title} | {list_member.id} \n"
            except Exception:
                pass
-    await message.reply_text(list_member)
+         await message.reply_text(list_member)
