@@ -16,4 +16,4 @@ async def list_show_grup(client, message):
             list_member += f"{chat_member.title} | {chat_member.id}\n"
         except Exception as e:
             print(f"Error getting chat member: {e}")
-     await message.reply_text(list_member)
+    await message.reply_text(list_member)
