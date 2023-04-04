@@ -37,7 +37,7 @@ async def api_ninja_dogs(client, message):
     real_name = response[0]["name"]
     try:
         this_ninja = await pro.edit("<code>Uploading ninja dog.....</code>")
-        await client.send_photo(message.chat.id photo=send_image_url, caption=real_name, reply_to_message_id=message.id)
+        await client.send_photo(message.chat.id, photo=send_image_url, caption=real_name, reply_to_message_id=message.id)
     except Exception as e:
         await pro.edit_text(f"No results found: {e}")
     try:
