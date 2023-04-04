@@ -11,13 +11,16 @@
 import requests
 
 async def api_ceo_dog(client, message):
+    ran = await message.reply_text("<code>Uploading.......</code>")
     API_DOG = "https://dog.ceo/api/breeds/image/random"
     response = requests.get(API_DOG)
     if response.status_code == 200:
         data_ceo = response.json()
-        
-        photo_dog_url = data_ceo[0]["message"]
-        ran = await message.reply_text("<code>Uploading.......</code>")
+        try:
+            photo_dog_url = data_ceo["message"]
+        except Exception as e:
+            await pro.edit_text(f"Error requests: {e}")
+            return 
         await client.send_photo(message.chat.id, photo=photo_dog_url, reply_to_message_id=message.id)
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
