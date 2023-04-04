@@ -32,13 +32,25 @@ async def api_ninja_dogs(client, message):
     headers = {"X-Api-Key": API_NINJA_DOG}
     
     response = requests.get(api_url, headers=headers).json()
-    send_image_url = response["image_link"]
-    real_name = response["name"]
-    if response.status_code == requests.codes.ok:
-        print(response.text)
+    if isinstance(response, list) and response:
+        result = response[0]
+        send_image_url = result.get("image_link")
+        real_name = result.get("name")
+        if send_image_url and real_name:
+            try:
+                await client.send_photo(
+                    message.chat.id,
+                    photo=send_image_url,
+                    caption=real_name,
+                    reply_to_message_id=message.id
+                )
+            except Exception as e:
+                await client.send_message(
+                    message.chat.id,
+                    f"Failed to send photo, please try again: {e}",
+                    reply_to_message_id=message.id
+                )
+        else:
+            await message.reply_text("No results found.")
     else:
-        print("Error:", response.status_code, response.text)
-    try:
-        await client.send_photo(message.chat.id, photo=send_image_url, caption=real_name, reply_to_message_id=message.id)
-    except Exception as e:
-        await client.send_message(message.chat.id, f"Failed to send photo, please try again : {e}", reply_to_message_id=message.id)
+        await message.reply_text("Error: Failed to fetch data from API.")
