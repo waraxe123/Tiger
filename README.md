@@ -60,6 +60,29 @@ async def hello_world(client, message):
 ```
 * Code : [pull requests](https://github.com/TeamKillerX/TigerX-Userbot/pulls)
 
+## Example Api Tools
+
+* this is available api : [`https://www.jsonapi.co/public-api`](https://www.jsonapi.co/public-api)
+
+* sure make plugins example `api_example.py`
+* check example link : [`Link Here`](https://github.com/TeamKillerX/TigerX-Userbot/blob/test/TigerX/lib/api_random.py)
+```python
+import requests
+
+API_URL_EXAMPLE = "your api here"
+response = requests.get(API_URL_EXAMPLE)
+if response.status_code == 200:
+    data_example = response.json()
+    try:
+        url_image = data_example["check_example_json"]
+    except Exception as e: # or KeyError
+        # using await or print()
+        return 
+    # your own code
+else:
+    # something 
+```
+
 ### Obtaining `sp_dc` and `sp_key` cookies
 
 Spotcast uses two cookies to authenticate against Spotify in order to have access to the required services.
