@@ -107,7 +107,3 @@ async def api_animechan_new(client, message):
         await ran.edit_text(animechan_full)
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
-    try:
-        await ran.delete()
-    except Exception:
-        pass
