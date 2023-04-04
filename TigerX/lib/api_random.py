@@ -85,3 +85,28 @@ async def api_fox_ca(client, message):
         await ran.delete()
     except Exception:
         pass
+
+async def api_animechan_new(client, message):
+    ran = await message.reply_text("<code>Prossing anime quotes.......</code>")
+    verce_link = "https"
+    vercel_name = "animechan.vercel.app"
+    vercel_api = "api"
+    vercel_random = "random"
+    vercel_param = f"{vercel_link}://{vercel_name}/{vercel_api}/{vercel_random}"
+    response = requests.get(vercel_param)
+    if response.status_code == 200:
+        data_animechan = response.json()
+        try:
+            anime_name = data_animechan["anime"]
+            anime_character = data_animechan["character"]
+            anime_quote = data_animechan["quote"]
+         except Exception as e:
+             await ran.edit_text(f"Error request {e}")
+         animechan_full = f"<b>Anime name:</b> {anime_name}\n<b>Character:</b> {anime_character}\n<b>Quote:</b> {anime_quote}"
+         await ran.edit_text(animechan_full)
+    else:
+        await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
+    try:
+        await ran.delete()
+    except Exception:
+        pass
