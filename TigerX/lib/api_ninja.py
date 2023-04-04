@@ -17,6 +17,7 @@ import requests
 API_NINJA_DOG = "Pyp4hM0TJqb+ZZUpRBUSTQ==B1VFKxPVKSWbCVRZ" # don't share this,
 
 async def api_ninja_dogs(client, message):
+    pro = await message.reply_text("<code>Prossing.......</code>")
     term_param = message.text.split(None, 1)[1] if len(message.command) > 1 else None
     if not term_param:
         await message.reply_text("Example: <code>+dog golden retriever</code>")
@@ -32,25 +33,14 @@ async def api_ninja_dogs(client, message):
     headers = {"X-Api-Key": API_NINJA_DOG}
     
     response = requests.get(api_url, headers=headers).json()
-    if isinstance(response, list) and response:
-        result = response[0]
-        send_image_url = result.get("image_link")
-        real_name = result.get("name")
-        if send_image_url and real_name:
-            try:
-                await client.send_photo(
-                    message.chat.id,
-                    photo=send_image_url,
-                    caption=real_name,
-                    reply_to_message_id=message.id
-                )
-            except Exception as e:
-                await client.send_message(
-                    message.chat.id,
-                    f"Failed to send photo, please try again: {e}",
-                    reply_to_message_id=message.id
-                )
-        else:
-            await message.reply_text("No results found.")
-    else:
-        await message.reply_text("Error: Failed to fetch data from API.")
+    send_image_url = response[0]["image_link"]
+    real_name = response[0]["name"]
+    try:
+        this_ninja = await pro.edit("<code>Uploading ninja dog.....</code>")
+        await client.send_photo(message.chat.id photo=send_image_url, caption=real_name, reply_to_message_id=message.id)
+    except Exception as e:
+        await pro.edit_text(f"No results found: {e}")
+    try:
+        await this_ninja.delete()
+    except Exception:
+        pass
