@@ -44,7 +44,7 @@ from .slp import *
 from .sang import *
 from .lsric import *
 from .lgs import *
-from .cts import *
+from .api_random import *
 from .usp import *
 from .animation import *
 from .txc import *
