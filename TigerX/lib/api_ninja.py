@@ -63,7 +63,7 @@ async def api_ninja_detect(client, message):
         if response.status_code == 200:
             data = response.json()
 
-            annotated_url = data["annotated_image_link"]
+            annotated_url = data[0]["annotated_image_link"]
 
             await client.send_photo(
                 message.chat.id,
