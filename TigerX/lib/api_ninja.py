@@ -46,6 +46,10 @@ async def api_ninja_detect(client, message):
         await message.reply_text("Please reply to a message with a photo.")
         return
 
+    if not API_NINJA_NEW:
+        await message.reply_text("Missing api key: <code>API_NINJA_DOG</code>")
+        return
+
     file_id = message.reply_to_message.photo.file_id
     photo_path = await client.download_media(file_id)
 
