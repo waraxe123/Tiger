@@ -21,8 +21,11 @@ async def api_ceo_dog(client, message):
             photo_dog_url = data_ceo["message"]
         except Exception as e:
             await ran.edit_text(f"Error requests: {e}")
-            return 
-        await client.send_photo(message.chat.id, photo=photo_dog_url, reply_to_message_id=message.id)
+            return
+        if photo_dog_url:
+            await client.send_photo(message.chat.id, photo=photo_dog_url, reply_to_message_id=message.id)
+        else:
+            await ran.edit_text("Not founds")
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     try:
@@ -41,7 +44,10 @@ async def api_big_cat(client, message):
         except Exception as e:
             await ran.edit_text(f"Error requests: {e}")
             return
-        await client.send_photo(message.chat.id, photo=photo_cat_url, reply_to_message_id=message.id)
+        if photo_cat_url:
+            await client.send_photo(message.chat.id, photo=photo_cat_url, reply_to_message_id=message.id)
+        else:
+            await ran.edit_text("Not founds")
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     try:
@@ -60,7 +66,10 @@ async def api_ceo_dog2(client, message):
         except Exception as e:
             await ran.edit_text(f"Error requests: {e}")
             return
-        await client.send_photo(message.chat.id, photo=photo_dog2_url, reply_to_message_id=message.id)
+        if photo_dog2_url:
+            await client.send_photo(message.chat.id, photo=photo_dog2_url, reply_to_message_id=message.id)
+        else:
+            await ran.edit_text("Not founds")
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     try:
@@ -79,8 +88,11 @@ async def api_fox_ca(client, message):
         except Exception as e:
             await ran.edit_text(f"Error requests: {e}")
             return
-        await client.send_photo(message.chat.id, photo=photo_fox_url, reply_to_message_id=message.id)
-    else:
+        if photo_fox_url:
+            await client.send_photo(message.chat.id, photo=photo_fox_url, reply_to_message_id=message.id)
+        else:
+            await ran.edit_text("Not founds")
+    else:   
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     try:
         await ran.delete()
@@ -136,3 +148,7 @@ async def api_waifu_main(client, message):
             await ran.edit_text("Not founds animechan")
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
+    try:
+        await ran.delete()
+    except Exception:
+        pass
