@@ -66,3 +66,22 @@ async def api_ceo_dog2(client, message):
         await ran.delete()
     except Exception:
         pass
+
+async def api_fox_ca(client, message):
+    ran = await message.reply_text("<code>Uploading.......</code>")
+    API_FOX_CA = "https://randomfox.ca/floof/"
+    response = requests.get(API_FOX_CA)
+    if response.status_code == 200:
+        data_fox = response.json()
+        try:
+            photo_fox_url = data_fox["image"]
+        except Exception as e:
+            await ran.edit_text(f"Error requests: {e}")
+            return
+        await client.send_photo(message.chat.id, photo=photo_fox_url, reply_to_message_id=message.id)
+    else:
+        await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
+    try:
+        await ran.delete()
+    except Exception:
+        pass
