@@ -11,6 +11,7 @@
 from TigerX import *
 from TigerX.lib import *
 import requests
+import os
 
 # you can get this api key : https://api-ninjas.com/profile
 
