@@ -102,6 +102,7 @@ async def api_animechan_new(client, message):
             anime_quote = data_animechan["quote"]
          except Exception as e:
              await ran.edit_text(f"Error request {e}")
+             return
          animechan_full = f"<b>Anime name:</b> {anime_name}\n<b>Character:</b> {anime_character}\n<b>Quote:</b> {anime_quote}"
          await ran.edit_text(animechan_full)
     else:
