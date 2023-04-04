@@ -122,7 +122,8 @@ async def api_waifu_main(client, message):
     waifu_types = "sfw"
     waifu_category = choice(LIST_SFW_JPG)
     waifu_param = f"{waifu_link}://{waifu_api}/{waifu_types}/{waifu_category}"
-    if response = requests.get(waifu_param)
+    response = requests.get(waifu_param)
+    if response.status_code == 200:
         data_waifu = response.json()
         try:
             waifu_image_url = data_waifu["url"]
