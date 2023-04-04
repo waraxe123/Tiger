@@ -12,3 +12,7 @@ async def image_fixed(client: Client, message: Message):
 @randydev(command("dog3", cmd) & owner)
 async def image_fixed_2(client: Client, message: Message):
     await api_ceo_dog2(client, message)
+
+@randydev(command("fox", cmd) & owner)
+async def image_fixed_3(client: Client, message: Message):
+    await api_fox_ca(client, message)
