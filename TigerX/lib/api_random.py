@@ -88,7 +88,7 @@ async def api_fox_ca(client, message):
 
 async def api_animechan_new(client, message):
     ran = await message.reply_text("<code>Prossing anime quotes.......</code>")
-    verce_link = "https"
+    vercel_link = "https"
     vercel_name = "animechan.vercel.app"
     vercel_api = "api"
     vercel_random = "random"
