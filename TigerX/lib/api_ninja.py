@@ -9,7 +9,7 @@
 # Developer Credits: @xtsea
 
 from TigerX import *
-from TigerX.lib
+from TigerX.lib import *
 import requests
 
 # you can get this api key : https://api-ninjas.com/profile
