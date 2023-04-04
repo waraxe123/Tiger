@@ -103,8 +103,8 @@ async def api_animechan_new(client, message):
          except Exception as e:
              await ran.edit_text(f"Error request {e}")
              return
-         animechan_full = f"<b>Anime name:</b> {anime_name}\n<b>Character:</b> {anime_character}\n<b>Quote:</b> {anime_quote}"
-         await ran.edit_text(animechan_full)
+        animechan_full = f"<b>Anime name:</b> {anime_name}\n<b>Character:</b> {anime_character}\n<b>Quote:</b> {anime_quote}"
+        await ran.edit_text(animechan_full)
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     try:
