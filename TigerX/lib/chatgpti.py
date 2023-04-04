@@ -61,7 +61,7 @@ async def chatpgt_image_generator(c, m):
 
     image_text = (m.text.split(None, 1)[1] if len(m.command) != 1 else None)
     if not image_text:
-       await m.reply_text("example <code>+{m.command[0]} superhero<code> : to using the chatgpt api image")
+       await m.reply_text(f"example <code>+{m.command[0]} superhero<code> : to using the chatgpt api image")
        return
 
     if not OPENAI_API:
@@ -72,7 +72,11 @@ async def chatpgt_image_generator(c, m):
     json={"model": model, "prompt": image_text, "size": "1024x1024", "response_format": "url"}
 
     response = requests.post(f"{new_link}://{chatgpt_api_url}/{version}/{new_image}", headers=headers, json=json)
-    image_url = response.json()["data"][0]["url"]
+    try:
+        image_url = response.json()['data'][0]['url']
+    except Exception:
+        pass
+        return
     image_content = requests.get(image_url).content
     new_caption = f"Question: {image_text}"
     try:
