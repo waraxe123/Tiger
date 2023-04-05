@@ -159,7 +159,7 @@ async def api_waifu_main(client, message):
 async def hacker_lacak_target(client, message):
     apikey = "3D07E2EAAF55940AF44734C3F2AC7C1A"
     ran = await message.reply_text("<code>Processing.......</code>")
-    ipddres = message.text.split(None, 1)[1] if len(message.command) != 1 else None)
+    ipddres = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not ipddres:
         await pro.edit("Example: <code>ip <your_ip_addres></code>")
         return
