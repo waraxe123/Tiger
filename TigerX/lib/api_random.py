@@ -246,7 +246,7 @@ async def whois_domain_target(client, message):
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
-        if domain_domain and domain_domainid and domain_status and domain_create_date and domain_update_date and domain_expire_date and domain_ages and domain_server and domain_url and domain_name and domain_organization and domain_addres and domain_city and domain_region and domain_country and domain_email and domain_zip and domain_phone and domain_nameservers:
+        if domain_domain and domain_domainid and domain_status and domain_create_date and domain_update_date and domain_expire_date and domain_ages and domain_server and domain_name and domain_organization and domain_addres and domain_city and domain_region and domain_country and domain_email and domain_zip and domain_phone and domain_nameservers:
             whois_domain += f"<b>Domain:</b> {domain_domain}\n"
             whois_domain += f"<b>Domain ID:</b> {domain_domainid}\n"
             whois_domain += f"<b>Status:</b> {domain_status}\n"
