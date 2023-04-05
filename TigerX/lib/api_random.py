@@ -161,8 +161,7 @@ async def randomuser(client, message):
     ran = await message.reply_text("<code>Processing.......</code>")
     url_random_user = "https://randomuser.me/api"
     random_results = ""
-    async with httpx.AsyncClient() as client:
-        response = await client.get(url_random_user)
+    response = requests.get(url_random_user)
     if response.status_code == 200:
         data_random = response.json()
         try:
@@ -190,8 +189,7 @@ async def randomuser(client, message):
             random_results += f"<b>Registered:</b> {registered['date'].split('T')[0]}\n"
             random_results += f"<b>Phone:</b> {phone}\n"
             random_results += f"<b>Cell:</b> {cell}\n"
-            image_response = await httpx.get(picture)
-            await client.send_photo(message.chat.id, photo=image_response.content, caption=random_results, reply_to_message_id=message.id)
+            await client.send_photo(message.chat.id, photo=image_response, caption=random_results, reply_to_message_id=message.id)
         else:
             await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     else:
