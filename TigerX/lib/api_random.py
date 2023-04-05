@@ -10,6 +10,7 @@
 
 import requests
 from random import choice
+from base64 import b64decode as kc
 
 async def api_ceo_dog(client, message):
     ran = await message.reply_text("<code>Uploading.......</code>")
@@ -157,15 +158,15 @@ async def api_waifu_main(client, message):
 # THIS DANGER IS TRACKED
 
 async def hacker_lacak_target(client, message):
-    apikey = "3D07E2EAAF55940AF44734C3F2AC7C1A"
+    apikey = kc("M0QwN0UyRUFBRjU1OTQwQUY0NDczNEMzRjJBQzdDMUE=").decode("utf-8")
     ran = await message.reply_text("<code>Processing.......</code>")
     ipddres = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not ipddres:
-        await pro.edit("Example: <code>ip <your_ip_addres></code>")
+        await ran.edit_text("Example: <code>ip <your_ip_addres></code>")
         return
 
     if not apikey:
-        await pro.edit_text("Missing apikey ip location")
+        await ran.edit_text("Missing apikey ip location")
         return
 
     location_link = "https"
