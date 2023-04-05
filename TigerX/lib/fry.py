@@ -10,7 +10,7 @@ from pyrogram.types import Message
 
 async def frybot(client, message):
     reply = message.reply_to_message
-    if not (reply or (reply.photo)):
+    if not (reply and (reply.photo)):
         await message.reply_text("`Reply to a photo`")
         return
     
