@@ -218,7 +218,7 @@ async def whois_domain_target(client, message):
         await ran.edit_text("Missing apikey ip domain")
         return
 
-    url_api_domain = f"https://api.ip2whois.com/v2?key={apikey}&domain={domain_text}
+    url_api_domain = f"https://api.ip2whois.com/v2?key={apikey}&domain={domain_text}"
     whois_domain = ""
     response = requests.get(url_api_domain)
     if response.status_code == 200:
