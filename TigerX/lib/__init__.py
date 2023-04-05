@@ -52,3 +52,4 @@ from .take import *
 from .pat import *
 from .listmb import *
 from .api_ninja import *
+from .fry import *
