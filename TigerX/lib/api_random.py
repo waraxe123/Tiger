@@ -130,6 +130,28 @@ async def api_animechan_new(client, message):
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
 
 
+async def api_quotes_new(client, message):
+    ran = await message.reply_text("<code>Processing quotes.......</code>")
+    api_quotes_url = "https://api.breakingbadquotes.xyz/v1/quotes"
+    response = requests.get(api_quotes_url)
+    correct_this_quote = ""
+    if response.status_code == 200:
+        data_quotes = response.json()
+        try:
+            request_quotes = data_quotes["quote"]
+            request_author = data_quotes["author"]
+        except Exception as e:
+             await ran.edit_text(f"Error request {e}")
+             return
+        if request_quotes and request_author:
+            correct_this_quote += f"<b>Quote:</b> {request_quotes}\n"
+            correct_this_quote += f"<b>Author:</b> {correct_this_quote}\n"
+            await ran.edit_text(correct_this_quote)
+        else: 
+            await ran.edit_text("failed to quote")
+    else:
+        await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
+
 async def api_waifu_main(client, message):
     ran = await message.reply_text("<code>Processing.......</code>")
     LIST_SFW_JPG = ["neko", "waifu", "megumin"]
