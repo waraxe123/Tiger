@@ -145,7 +145,7 @@ async def api_quotes_new(client, message):
              return
         if request_quotes and request_author:
             correct_this_quote += f"<b>Quote:</b> {request_quotes}\n"
-            correct_this_quote += f"<b>Author:</b> {correct_this_quote}\n"
+            correct_this_quote += f"<b>Author:</b> {request_author}\n"
             await ran.edit_text(correct_this_quote)
         else: 
             await ran.edit_text("failed to quote")
