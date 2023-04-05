@@ -211,7 +211,7 @@ async def whois_domain_target(client, message):
     ran = await message.reply_text("<code>Processing.......</code>")
     domain_text = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not domain_text:
-        await ran.edit_text("Example: <code>+ip your ip address here : 1592.401.xxx</code>")
+        await ran.edit_text("Example: <code>+your can get ip domain</code>")
         return
 
     if not apikey:
@@ -236,7 +236,7 @@ async def whois_domain_target(client, message):
             domain_expire_date = data_domain["expire_date"]
             domain_ages = data_domain["domain_age"]
             domain_server = data_domain["whois_server"]
-            domain_url = data_domain["url"]
+            # domain_url = data_domain["url"]
             domain_name = data_domain["name"]
             domain_organization = data_domain["organization"]
             domain_addres = data_domain["street_address"]
@@ -259,7 +259,7 @@ async def whois_domain_target(client, message):
             whois_domain += f"<b>Expire date:</b> {domain_expire_date}\n"
             whois_domain += f"<b>Age:</b> {domain_ages}\n"
             whois_domain += f"<b>Whois_server:</b> {domain_server}\n"
-            whois_domain += f"<b>Url:</b> {domain_url}\n"
+            # whois_domain += f"<b>Url:</b> {domain_url}\n"
             whois_domain += f"<b>Name:</b> {domain_name}\n"
             whois_domain += f"<b>Organization:</b> {domain_organization}\n"
             whois_domain += f"<b>Street address:</b> {domain_addres}\n"
