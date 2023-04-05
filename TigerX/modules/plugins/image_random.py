@@ -26,6 +26,9 @@ add_command_help(
         ["dog2", "to using api dog."],
         ["dog3", "to using api dog versi 2."],
         ["fox", "to using api fox ."],
+        ["waifu", "to using api anime waifu."],
+        ["animequote", "to using api animechan."],
         ["ip", "to using api get trace ip address."],
+
     ],
 )
