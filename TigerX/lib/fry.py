@@ -20,9 +20,10 @@ async def frybot(client, message):
     if args := message.text.split(None, 1)[1]:
         args = args.lstrip()
     try:
-        get_reply = await client.send_message(CHAT, f"/deepfry {args}")
+        await client.send_message(CHAT, f"/deepfry {args}")
         await asyncio.sleep(3)
-        await client.send_photo(CHAT, photo=file_path, reply_to_message_id=get_reply.id)
+        await client.send_photo(CHAT, photo=file_path, reply_to_message_id=message.id)
+        await asyncio.sleep(10)
         async for x in client.search_messages(CHAT, limit=1):
             if x.photo:
                 send_param = await client.download_media(x)
