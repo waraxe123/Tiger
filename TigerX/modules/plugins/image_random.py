@@ -19,6 +19,15 @@ async def image_fixed_2(client: Client, message: Message):
 async def image_fixed_3(client: Client, message: Message):
     await api_fox_ca(client, message)
 
+@randydev(command("fox", cmd) & owner)
+async def image_fixed_3(client: Client, message: Message):
+    await api_fox_ca(client, message)
+
+@randydev(command("frybot", cmd) & owner)
+async def frybot_handler(client: Client, message: Message):
+    await frybot(client, message):
+    
+
 add_command_help(
     "apitools",
     [
