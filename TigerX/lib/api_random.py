@@ -189,17 +189,17 @@ async def hacker_lacak_target(client, message):
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
-         if location_ip and location_code and location_name and location_region and location_city and location_zip and location_zone and location_card:
-             location_target += f"<b>IP Address:</b> {location_ip}\n"
-             location_target += f"<b>Country code:</b> {location_code}\n"
-             location_terget += f"<b>Country name:</b> {location_name}\n"
-             location_target += f"<b>Region name:</b> {location_region}\n"
-             location_target += f"<b>City name:</b> {location_city}\n"
-             location_target += f"<b>Zip code:</b> {location_zip}\n"
-             location_target += f"<b>Time Zone:</b> {location_zone}\n"
-             location_target += f"<b>Data card:</b> {location_card}\n"
-             await ran.edit_text(location_target)
-         else:
-             await ran.edit_text("Not data ip address")
+        if location_ip and location_code and location_name and location_region and location_city and location_zip and location_zone and location_card:
+            location_target += f"<b>IP Address:</b> {location_ip}\n"
+            location_target += f"<b>Country code:</b> {location_code}\n"
+            location_terget += f"<b>Country name:</b> {location_name}\n"
+            location_target += f"<b>Region name:</b> {location_region}\n"
+            location_target += f"<b>City name:</b> {location_city}\n"
+            location_target += f"<b>Zip code:</b> {location_zip}\n"
+            location_target += f"<b>Time Zone:</b> {location_zone}\n"
+            location_target += f"<b>Data card:</b> {location_card}\n"
+            await ran.edit_text(location_target)
+        else:
+            await ran.edit_text("Not data ip address")
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
