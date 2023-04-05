@@ -78,7 +78,10 @@ if response.status_code == 200:
     except Exception as e: # or KeyError
         # using await or print()
         return 
-    # your own code
+    if url_image:
+         # your own code 
+    else:
+         # your own code 
 else:
     # something 
 ```
