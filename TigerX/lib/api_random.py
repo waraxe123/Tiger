@@ -13,6 +13,7 @@ from random import choice
 from base64 import b64decode as kc
 import base64
 import aiohttp
+import httpx
 
 async def api_ceo_dog(client, message):
     ran = await message.reply_text("<code>Uploading.......</code>")
@@ -160,57 +161,46 @@ async def randomuser(client, message):
     ran = await message.reply_text("<code>Processing.......</code>")
     url_random_user = "https://randomuser.me/api"
     random_results = ""
-    response = requests.get(url_random_user)
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url_random_user)
     if response.status_code == 200:
         data_random = response.json()
         try:
-            gender = data_random["gender"]
-            title = data_random["title"]
-            first = data_random["first"]
-            last = data_random["last"]
-            street = data_random["number"]
-            city = data_random["city"]
-            state = data_random["state"]
-            country = data_random["country"]
-            postcode = data_random["postcode"]
-            offset = data_random["offset"]
-            description = data_random["description"]
-            email = data_random["email"]
-            username = data_random["username"]
-            password = data_random["password"]
-            date = data_random["date"]
-            age = data_random["age"] 
-            medium = data_random["medium"]
+            gender = data_random["results"][0]["gender"]
+            name = data_random["results"][0]["name"]
+            location = data_random["results"][0]["location"]
+            email = data_random["results"][0]["email"]
+            login = data_random["results"][0]["login"]
+            dob = data_random["results"][0]["dob"]
+            registered = data_random["results"][0]["registered"]
+            phone = data_random["results"][0]["phone"]
+            cell = data_random["results"][0]["cell"]
+            picture = data_random["results"][0]["picture"]["large"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
-        if gender and title and first and last and street and city and state and country and postcode and offset and description and email and username and password and date and age and medium:
+        if gender and name and location and email and login and dob and registered and phone and cell and picture:
+            random_results += f"<b>Name:</b> {name['title']} {name['first']} {name['last']}\n"
             random_results += f"<b>Gender:</b> {gender}\n"
-            random_results += f"<b>Title :</b> {title}\n"
-            random_results += f"<b>First :</b>  {first}\n"
-            random_results += f"<b>Last :</b> {last}\n"
-            random_results += f"<b>Street :</b> {street}\n"
-            random_results += f"<b>City :</b> {city}\n"
-            random_results += f"<b>State :</b> {state}\n"
-            random_results += f"<b>Country :</b> {country}\n"
-            random_results += f"<b>Postcode :</b> {postcode}\n"
-            random_results += f"<b>Offset :</b> {offset}\n"
-            random_results += f"<b>Description :</b> {description}\n"
-            random_results += f"<b>Email :</b> {email}\n"
-            random_results += f"<b>Username :</b> {username}\n"
-            random_results += f"<b>Password :</b> {password}\n"
-            random_results += f"<b>Date :</b> {date}\n"
-            random_results += f"<b>Age :</b> {age}\n"
-            await client.send_photo(message.chat.id, photo=medium, caption=random_results, reply_to_message_id=message.id)
+            random_results += f"<b>Location:</b> {location['street']['number']} {location['street']['name']}, {location['city']}, {location['state']}, {location['country']} {location['postcode']}\n"
+            random_results += f"<b>Email:</b> {email}\n"
+            random_results += f"<b>Username:</b> {login['username']}\n"
+            random_results += f"<b>Password:</b> {login['password']}\n"
+            random_results += f"<b>Date of birth:</b> {dob['date'].split('T')[0]}\n"
+            random_results += f"<b>Registered:</b> {registered['date'].split('T')[0]}\n"
+            random_results += f"<b>Phone:</b> {phone}\n"
+            random_results += f"<b>Cell:</b> {cell}\n"
+            image_response = await httpx.get(picture)
+            await client.send_photo(message.chat.id, photo=image_response.content, caption=random_results, reply_to_message_id=message.id)
         else:
-            await ran.edit_text("Not founds animechan")
+            await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     else:
         await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     try:
         await ran.delete()
     except Exception:
         pass
-    
+  
 # DO NOT SHARE THIS MODULE 
 # THIS DANGER IS TRACKED
 
