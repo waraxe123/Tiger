@@ -16,7 +16,7 @@ async def frybot(client, message):
     
     file_id = reply.photo.file_id if reply.photo else reply.sticker.file_id
     file_path = await client.download_media(file_id)
-    CHAT = await client.resolve_peer("image_deepfrybot")
+    CHAT = "image_deepfrybot"
     if args := message.text.split(None, 1)[1]:
         args = args.lstrip()
     try:
