@@ -189,7 +189,7 @@ async def randomuser(client, message):
             random_results += f"<b>Registered:</b> {registered['date'].split('T')[0]}\n"
             random_results += f"<b>Phone:</b> {phone}\n"
             random_results += f"<b>Cell:</b> {cell}\n"
-            await client.send_photo(message.chat.id, photo=image_response, caption=random_results, reply_to_message_id=message.id)
+            await client.send_photo(message.chat.id, photo=picture, caption=random_results, reply_to_message_id=message.id)
         else:
             await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
     else:
