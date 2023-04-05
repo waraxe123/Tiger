@@ -6,6 +6,16 @@ from time import sleep
 from pyrogram import filters
 import asyncio
 
+from pyrogram.types import Message
+
+def mediainfo(media: Message.media):
+    if isinstance(media, Message.Photo):
+        return "pic"
+    elif isinstance(media, Message.Sticker):
+        return "sticker"
+    else:
+        return None
+
 async def frybot(client, message):
     reply = message.reply_to_message
     if not (reply and reply.media and mediainfo(reply.media) in ("pic", "sticker")):
