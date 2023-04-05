@@ -156,6 +156,61 @@ async def api_waifu_main(client, message):
     except Exception:
         pass
 
+async def randomuser(client, message):
+    ran = await message.reply_text("<code>Processing.......</code>")
+    url_random_user = "https://randomuser.me/api"
+    random_results = ""
+    response = requests.get(url_random_user)
+    if response.status_code == 200:
+        data_random = response.json()
+        try:
+            gender = data_random["gender"]
+            title = data_random["title"]
+            first = data_random["first"]
+            last = data_random["last"]
+            street = data_random["number"]
+            city = data_random["city"]
+            state = data_random["state"]
+            country = data_random["country"]
+            postcode = data_random["postcode"]
+            offset = data_random["offset"]
+            description = data_random["description"]
+            email = data_random["email"]
+            username = data_random["username"]
+            password = data_random["password"]
+            date = data_random["date"]
+            age = data_random["age"] 
+            medium = data_random["medium"]
+        except Exception as e:
+            await ran.edit_text(f"Error request {e}")
+            return
+        if gender and title and first and last and street and city and state and country and postcode and offset and description and email and username and password and date and age and medium:
+            random_results += f"<b>Gender:</b> {gender}\n"
+            random_results += f"<b>Title :</b> {title}\n"
+            random_results += f"<b>First :</b>  {first}\n"
+            random_results += f"<b>Last :</b> {last}\n"
+            random_results += f"<b>Street :</b> {street}\n"
+            random_results += f"<b>City :</b> {city}\n"
+            random_results += f"<b>State :</b> {state}\n"
+            random_results += f"<b>Country :</b> {country}\n"
+            random_results += f"<b>Postcode :</b> {postcode}\n"
+            random_results += f"<b>Offset :</b> {offset}\n"
+            random_results += f"<b>Description :</b> {description}\n"
+            random_results += f"<b>Email :</b> {email}\n"
+            random_results += f"<b>Username :</b> {username}\n"
+            random_results += f"<b>Password :</b> {password}\n"
+            random_results += f"<b>Date :</b> {date}\n"
+            random_results += f"<b>Age :</b> {age}\n"
+            await client.send_photo(message.chat.id, photo=medium, caption=random_results, reply_to_message_id=message.id)
+        else:
+            await ran.edit_text("Not founds animechan")
+    else:
+        await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
+    try:
+        await ran.delete()
+    except Exception:
+        pass
+    
 # DO NOT SHARE THIS MODULE 
 # THIS DANGER IS TRACKED
 
