@@ -162,7 +162,7 @@ async def hacker_lacak_target(client, message):
     ran = await message.reply_text("<code>Processing.......</code>")
     ipddres = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not ipddres:
-        await ran.edit_text("Example: <code>ip <your_ip_addres></code>")
+        await ran.edit_text("Example: <code>+ip your ip address here : 1592.401.xxx</code>")
         return
 
     if not apikey:
