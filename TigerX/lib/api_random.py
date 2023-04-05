@@ -173,6 +173,7 @@ async def hacker_lacak_target(client, message):
     location_key = f"key={apikey}"
     location_search = f"ip={ipddres}"
     location_param = f"{location_link}://{location_api}/?{location_key}&{location_search}"
+    location_target = ""
     response = requests.get(location_param)
     if response.status_code == 200:
         data_location = response.json()
@@ -189,10 +190,9 @@ async def hacker_lacak_target(client, message):
             await ran.edit_text(f"Error request {e}")
             return
         if location_ip and location_code and location_name and location_region and location_city and location_zip and location_zone and location_card:
-            location_target = ""
             location_target += f"<b>IP Address:</b> {location_ip}\n"
             location_target += f"<b>Country code:</b> {location_code}\n"
-            location_terget += f"<b>Country name:</b> {location_name}\n"
+            location_target += f"<b>Country name:</b> {location_name}\n"
             location_target += f"<b>Region name:</b> {location_region}\n"
             location_target += f"<b>City name:</b> {location_city}\n"
             location_target += f"<b>Zip code:</b> {location_zip}\n"
