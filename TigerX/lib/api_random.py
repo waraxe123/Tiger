@@ -262,4 +262,8 @@ async def whois_domain_target(client, message):
                         whois_domain += f"<b>Region:</b> {domain_region}\n"
                         await ran.edit_text(whois_domain)
                     else:
-                        await ran.edit_text("Not data ip domain")
+                        await ran.edit_text("No data for this domain.")
+                else:
+                    await ran.edit_text("Error: could not fetch WHOIS information.")
+    except Exception as e:
+        await ran.edit_text(f"Error: {str(e)}")
