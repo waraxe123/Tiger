@@ -2,7 +2,7 @@
 
 from TigerX import *
 from TigerX.lib import *
-import sleep
+from time import sleep
 from pyrogram import filters
 import asyncio
 
