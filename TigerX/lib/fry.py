@@ -29,5 +29,5 @@ async def frybot(client, message):
                 await client.send_photo(message.chat.id, photo=send_param)
             else:
                 await client.send_message(message.chat.id, "Failed Error", reply_to_message_id=message.id)
-    except Exception as e:
-        await message.reply_text(f"Error request {e}")
+    except Exception:
+        pass
