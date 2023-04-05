@@ -25,7 +25,7 @@ async def image_fixed_3(client: Client, message: Message):
 
 @randydev(command("frybot", cmd) & owner)
 async def frybot_handler(client: Client, message: Message):
-    await frybot(client, message):
+    await frybot(client, message)
     
 
 add_command_help(
