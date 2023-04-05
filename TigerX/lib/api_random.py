@@ -11,6 +11,8 @@
 import requests
 from random import choice
 from base64 import b64decode as kc
+import base64
+import aiohttp
 
 async def api_ceo_dog(client, message):
     ran = await message.reply_text("<code>Uploading.......</code>")
@@ -207,7 +209,7 @@ async def hacker_lacak_target(client, message):
 
 
 async def whois_domain_target(client, message):
-    apikey = kc("M0QwN0UyRUFBRjU1OTQwQUY0NDczNEMzRjJBQzdDMUE=").decode("utf-8")
+    apikey = base64.b64decode("M0QwN0UyRUFBRjU1OTQwQUY0NDczNEMzRjJBQzdDMUE=").decode("utf-8")
     ran = await message.reply_text("<code>Processing.......</code>")
     domain_text = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not domain_text:
@@ -220,54 +222,44 @@ async def whois_domain_target(client, message):
 
     url_api_domain = f"https://api.ip2whois.com/v2?key={apikey}&domain={domain_text}"
     whois_domain = ""
-    response = requests.get(url_api_domain)
-    if response.status_code == 200:
-        data_domain = response.json()
-        try:
-            domain_domain = data_domain["domain"]
-            domain_domainid = data_domain["domain_id"]
-            domain_status = data_domain["status"]
-            domain_create_date = data_domain["create_date"]
-            domain_update_date = data_domain["update_date"]
-            domain_expire_date = data_domain["expire_date"]
-            domain_ages = data_domain["domain_age"]
-            domain_server = data_domain["whois_server"]
-            # domain_url = data_domain["url"]
-            domain_name = data_domain["name"]
-            domain_organization = data_domain["organization"]
-            domain_addres = data_domain["street_address"]
-            domain_city = data_domain["city"]
-            domain_region = data_domain["region"]
-            domain_country = data_domain["country"]
-            domain_email = data_domain["email"]
-            domain_zip = data_domain["zip_code"]
-            domain_phone = data_domain["phone"]
-            domain_nameservers = data_domain["nameservers"]
-        except Exception as e:
-            await ran.edit_text(f"Error request {e}")
-            return
-        if domain_domain and domain_domainid and domain_status and domain_create_date and domain_update_date and domain_expire_date and domain_ages and domain_server and domain_name and domain_organization and domain_addres and domain_city and domain_region and domain_country and domain_email and domain_zip and domain_phone and domain_nameservers:
-            whois_domain += f"<b>Domain:</b> {domain_domain}\n"
-            whois_domain += f"<b>Domain ID:</b> {domain_domainid}\n"
-            whois_domain += f"<b>Status:</b> {domain_status}\n"
-            whois_domain += f"<b>Create date:</b> {domain_create_date}\n"
-            whois_domain += f"<b>Update date:</b> {domain_update_date}\n"
-            whois_domain += f"<b>Expire date:</b> {domain_expire_date}\n"
-            whois_domain += f"<b>Age:</b> {domain_ages}\n"
-            whois_domain += f"<b>Whois_server:</b> {domain_server}\n"
-            # whois_domain += f"<b>Url:</b> {domain_url}\n"
-            whois_domain += f"<b>Name:</b> {domain_name}\n"
-            whois_domain += f"<b>Organization:</b> {domain_organization}\n"
-            whois_domain += f"<b>Street address:</b> {domain_addres}\n"
-            whois_domain += f"<b>City:</b> {domain_city}\n"
-            whois_domain += f"<b>Region:</b> {domain_region}\n"
-            whois_domain += f"<b>Country:</b> {domain_country}\n"
-            whois_domain += f"<b>Email:</b> {domain_email}\n"
-            whois_domain += f"<b>Zip code:</b> {domain_zip}\n"
-            whois_domain += f"<b>Phone:</b> {domain_phone}\n"
-            whois_domain += f"<b>Nameservers:</b> {domain_nameservers}\n"
-            await ran.edit_text(whois_domain)
-        else:
-            await ran.edit_text("Not data ip domain")
-    else:
-        await ran.edit_text("Sorry, there was an error processing your request. Please try again later")
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url_api_domain) as response:
+                if response.status == 200:
+                    data_domain = await response.json()
+                    domain_domain = data_domain.get("domain")
+                    domain_domainid = data_domain.get("domain_id")
+                    domain_status = data_domain.get("status")
+                    domain_create_date = data_domain.get("create_date")
+                    domain_update_date = data_domain.get("update_date")
+                    domain_expire_date = data_domain.get("expire_date")
+                    domain_ages = data_domain.get("domain_age")
+                    domain_server = data_domain.get("whois_server")
+                    domain_name = data_domain.get("name")
+                    domain_organization = data_domain.get("organization")
+                    domain_addres = data_domain.get("street_address")
+                    domain_city = data_domain.get("city")
+                    domain_region = data_domain.get("region")
+                    domain_country = data_domain.get("country")
+                    domain_email = data_domain.get("email")
+                    domain_zip = data_domain.get("zip_code")
+                    domain_phone = data_domain.get("phone")
+                    domain_nameservers = data_domain.get("nameservers")
+
+                    if domain_domain and domain_domainid and domain_status and domain_create_date and domain_update_date and domain_expire_date and domain_ages and domain_server and domain_name and domain_organization and domain_addres and domain_city and domain_region and domain_country and domain_email and domain_zip and domain_phone and domain_nameservers:
+                        whois_domain += f"<b>Domain:</b> {domain_domain}\n"
+                        whois_domain += f"<b>Domain ID:</b> {domain_domainid}\n"
+                        whois_domain += f"<b>Status:</b> {domain_status}\n"
+                        whois_domain += f"<b>Create date:</b> {domain_create_date}\n"
+                        whois_domain += f"<b>Update date:</b> {domain_update_date}\n"
+                        whois_domain += f"<b>Expire date:</b> {domain_expire_date}\n"
+                        whois_domain += f"<b>Age:</b> {domain_ages}\n"
+                        whois_domain += f"<b>Whois_server:</b> {domain_server}\n"
+                        whois_domain += f"<b>Name:</b> {domain_name}\n"
+                        whois_domain += f"<b>Organization:</b> {domain_organization}\n"
+                        whois_domain += f"<b>Street address:</b> {domain_addres}\n"
+                        whois_domain += f"<b>City:</b> {domain_city}\n"
+                        whois_domain += f"<b>Region:</b> {domain_region}\n"
+                        await ran.edit_text(whois_domain)
+                    else:
+                        await ran.edit_text("Not data ip domain")
