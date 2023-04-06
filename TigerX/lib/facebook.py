@@ -23,7 +23,7 @@ async def facebook_downloader(client, message):
     querystring = {"url": link}
 
     headers = {"X-RapidAPI-Key": "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb", "X-RapidAPI-Host": "facebook-video-and-reel-downloader.p.rapidapi.com"}
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.request("GET", url, headers=headers, params=querystring)
 
     if response.status_code == 200:
         data_facebook = response.json()
