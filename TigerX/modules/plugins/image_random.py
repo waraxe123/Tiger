@@ -26,6 +26,10 @@ async def image_fixed_3(client: Client, message: Message):
 @randydev(command("frybot", cmd) & owner)
 async def frybot_handler(client: Client, message: Message):
     await frybot(client, message)
+
+@randydev(command("quotes", cmd) & owner)
+async def frybot_handler(client: Client, message: Message):
+    await api_quotes_new(client, message)
     
 
 add_command_help(
@@ -38,6 +42,8 @@ add_command_help(
         ["waifu", "to using api anime waifu."],
         ["animequote", "to using api animechan."],
         ["ip", "to using api get trace ip address."],
+        ["randomuser", "to using api random user."],
+        ["quotes", "to using api quotes"],
 
     ],
 )
