@@ -33,10 +33,8 @@ async def facebook_downloader(client, message):
             await ran.edit_text(f"Error request {e}")
             return
 
-        for hd_url in facebook_hd:
-            facebook_url = requests.get(hd_url)
-
-        if facebook_hd and facebook_title:
+        facebook_url = requests.get(facebook_hd)
+        if facebook_hd:
             if facebook_url:
                 send_video_path = "tigerx_userbot.mp4"
                 with open(send_video_path, "wb") as f:
@@ -49,3 +47,7 @@ async def facebook_downloader(client, message):
             await ran.edit_text("Error please try again facebook")
     else:
         await ran.edit_text(f"Failed to api facebook")
+    try:
+        await ran.delete()
+     except Exception:
+         pass
