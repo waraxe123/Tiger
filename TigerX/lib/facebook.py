@@ -36,21 +36,23 @@ async def facebook_downloader(client, message):
             await ran.edit_text(f"Error request {e}")
             return
 
+        progress_bar = ""
         facebook_url = requests.get(facebook_hd, stream=True)
         if facebook_hd:
             if facebook_url:
+                total_size = int(facebook_url.headers.get("content-length", 0))
                 send_video_path = "tigerx_userbot.mp4"
                 with open(send_video_path, "wb") as f:
-                    total_size = int(facebook_url.headers.get('content-length', 0))
-                    block_size = 1024
-                    progress_bar = tqdm(total=total_size, unit='iB', unit_scale=True)
-                    for data in facebook_url.iter_content(block_size):
-                        progress_bar.update(len(data))
+                    bytes_received = 0
+                    progress = 0
+                    for data in facebook_url.iter_content(chunk_size=4096):
                         f.write(data)
-                        progress = f"{progress_bar.n//1024}KB of {total_size//1024}KB"
-                        await ran.edit_text(f"Downloading {progress}")
-                    progress_bar.close()
-
+                        bytes_received += len(data)
+                        progress = int(bytes_received / total_size * 100)
+                        new_progress_bar = f"Downloading {progress}% of {total_size}"
+                        if new_progress_bar != progress_bar:
+                            await ran.edit_text(new_progress_bar)
+                            progress_bar = new_progress_bar
                 await client.send_video(message.chat.id, video=send_video_path, reply_to_message_id=message.id)
                 os.remove(send_video_path)   
             else:
