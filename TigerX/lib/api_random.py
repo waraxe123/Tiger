@@ -348,10 +348,10 @@ async def api_movie_info(client, message):
     if response.status_code == 200:
         data_movie = response.json()
         try:
-            search_title = data_movie["Search"][0]["title"] # using [0] empty something 
-            year_movie = data_movie["Search"][0]["year"]
+            search_title = data_movie["Search"][0]["Title"] # using [0] empty something 
+            year_movie = data_movie["Search"][0]["Year"]
             imdb_code = data_movie["Search"][0]["imdbID"]
-            movies = data_movie["Search"][0]["type"]
+            movies = data_movie["Search"][0]["Type"]
             image_movie_url = data_movie["Search"][0]["Poster"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
