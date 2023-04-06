@@ -14,7 +14,7 @@ import requests
 
 async def facebook_downloader(client, message):
     ran = await message.reply_text("<code>Processing.....</code>")
-    link = message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    link = message.text.split()[1] if len(message.command) > 1 else None
     if not link:
         await ran.edit_text("for example a video link from facebook")
         return
@@ -35,15 +35,17 @@ async def facebook_downloader(client, message):
             await ran.edit_text(f"Error request {e}")
             return
 
+        facebook_urls = []
         for hd_url in facebook_hd:
-            facebook_url = requests.get(hd_url)
+            facebook_response = requests.get(hd_url)
+            facebook_urls.append(facebook_response.content)
 
         if facebook_hd and facebook_title:
             get_string += f"<b>Title :</b> {facebook_title}\n"
-            if facebook_url:
+            if facebook_urls:
                 send_video_path = "tigerx_userbot.mp4"
                 with open(send_video_path, "wb") as f:
-                    f.write(facebook_url.content)
+                    f.write(facebook_urls[-1])
                 await client.send_video(message.chat.id, video=send_video_path, caption=get_string, reply_to_message_id=message.id)
                 os.remove(send_video_path)   
             else:
