@@ -14,10 +14,14 @@ import requests
 
 async def facebook_downloader(client, message):
     ran = await message.reply_text("<code>Processing.....</code>")
-    link = message.text.split()[1] if len(message.command) > 1 else None
+    link = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not link:
-        await ran.edit_text("for example a video link from facebook")
+        await ran.edit_text("Please provide a valid video link from Facebook.")
         return
+
+    # Add http:// prefix if missing
+    if not link.startswith("http"):
+        link = f"http://{link}"
 
     url = "https://facebook-video-and-reel-downloader.p.rapidapi.com/"
     querystring = {"url": link}
@@ -35,17 +39,15 @@ async def facebook_downloader(client, message):
             await ran.edit_text(f"Error request {e}")
             return
 
-        facebook_urls = []
         for hd_url in facebook_hd:
-            facebook_response = requests.get(hd_url)
-            facebook_urls.append(facebook_response.content)
+            facebook_url = requests.get(hd_url)
 
         if facebook_hd and facebook_title:
             get_string += f"<b>Title :</b> {facebook_title}\n"
-            if facebook_urls:
+            if facebook_url:
                 send_video_path = "tigerx_userbot.mp4"
                 with open(send_video_path, "wb") as f:
-                    f.write(facebook_urls[-1])
+                    f.write(facebook_url.content)
                 await client.send_video(message.chat.id, video=send_video_path, caption=get_string, reply_to_message_id=message.id)
                 os.remove(send_video_path)   
             else:
