@@ -48,6 +48,7 @@ add_command_help(
         ["ip", "to using api get trace ip address."],
         ["randomuser", "to using api random user."],
         ["quotes", "to using api quotes"],
+        ["findmovie", "to using api IMDB"],
 
     ],
 )
