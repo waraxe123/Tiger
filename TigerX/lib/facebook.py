@@ -14,7 +14,7 @@ import requests
 
 async def facebook_downloader(client, message):
     ran = await message.reply_text("<code>Processing.....</code>")
-    link = "https://" + message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    link = message.text.split(" ", 1)[1] if len(message.command) != 1 else None
     if not link:
         await ran.edit_text("Please provide a valid video link from Facebook.")
         return
