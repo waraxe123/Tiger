@@ -63,3 +63,7 @@ async def tiktok_downloader(client, message):
             await ran.edit_text("Error please try again tiktok")
     else:
         await ran.edit_text("Error failed api TikTok")
+    try:
+        await ran.delete()
+    except Exception:
+        pass
