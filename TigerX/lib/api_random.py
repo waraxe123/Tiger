@@ -357,7 +357,7 @@ async def api_movie_info(client, message):
             await ran.edit_text(f"Error request {e}")
             return
         if search_title and year_movie and imdb_code and movies and image_movie_url:
-            search_text += f"<b>Film movie :</b> {search_title}\n"
+            search_text += f"<b>Film title :</b> {search_title}\n"
             search_text += f"<b>Year :</b> {year_movie}\n"
             search_text += f"<b>Imdb ID :</b> {imdb_code}\n"
             search_text += f"<b>Type :</b> {movies}\n"
