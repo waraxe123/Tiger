@@ -28,7 +28,7 @@ async def facebook_downloader(client, message):
     if response.status_code == 200:
         data_facebook = response.json()
         try:
-            facebook_hd = data_facebook["hd"]
+            facebook_hd = data_facebook["sd"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
