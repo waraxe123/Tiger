@@ -45,13 +45,17 @@ async def tiktok_downloader(client, message):
             music_responses.append(music_response)
         
         if music_urls and video_urls:
-            if all(video_response.ok for video_response in video_responses):
+            for video_response in video_responses:
+                full_video = True
+            for music_response in music_responses:
+                full_music  = True
+            if full_video:
                 send_video_file_path = "tigerx_userbot.mp4"
                 with open(send_video_file_path, "wb") as f:
                     f.write(video_response.content)
                 await client.send_video(message.chat.id, video=send_video_file_path, reply_to_message_id=message.id)
                 os.remove(send_video_file_path)
-            elif all(music_response.ok for music_response in music_responses):
+            elif full_music:
                 send_audio_file_path = "tigerx_userbot.mp3"
                 with open(send_audio_file_path, "wb") as f:
                     f.write(music_response.content)
