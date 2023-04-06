@@ -28,8 +28,12 @@ async def frybot_handler(client: Client, message: Message):
     await frybot(client, message)
 
 @randydev(command("quotes", cmd) & owner)
-async def frybot_handler(client: Client, message: Message):
+async def quotes_handler(client: Client, message: Message):
     await api_quotes_new(client, message)
+
+@randydev(command("findmovie", cmd) & owner)
+async def movie_handler(client: Client, message: Message):
+    await api_movie_info(client, message)
     
 
 add_command_help(
