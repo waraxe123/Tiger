@@ -361,7 +361,7 @@ async def api_movie_info(client, message):
             search_text += f"<b>Year :</b> {year_movie}\n"
             search_text += f"<b>Imdb ID :</b> {imdb_code}\n"
             search_text += f"<b>Type :</b> {movies}\n"
-            await client.send_photo(message.chat.id, photo=image_movie_url, reply_to_message_id=message.id)
+            await client.send_photo(message.chat.id, photo=image_movie_url, caption=search_text, reply_to_message_id=message.id)
         else:
             await ran.edit_text("No data for this Movies.")
     else:
