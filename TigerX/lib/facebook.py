@@ -1,3 +1,13 @@
+# Copyright (C) 2020-2023 TeamKillerX <https://github.com/TeamKillerX>
+#
+# This file is part of TeamKillerX project,
+# and licensed under GNU Affero General Public License v3.
+# See the GNU Affero General Public License for more details.
+#
+# All rights reserved. See COPYING, AUTHORS.
+#
+# Developer Credits: @xtsea
+
 from TigerX import *
 from TigerX.lib import *
 import requests
@@ -19,8 +29,8 @@ async def facebook_downloader(client, message):
     if response.status_code == 200:
         data_facebook = response.json()
         try:
-            facebook_title = data_facebook["title"] 
-            facebook_hd = data_facebook["hd"]
+            facebook_title = data_facebook[0]["title"] 
+            facebook_hd = data_facebook[0]["hd"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
