@@ -49,5 +49,5 @@ async def facebook_downloader(client, message):
         await ran.edit_text(f"Failed to api facebook")
     try:
         await ran.delete()
-     except Exception:
-         pass
+    except Exception:
+        pass
