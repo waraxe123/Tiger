@@ -14,14 +14,10 @@ import requests
 
 async def facebook_downloader(client, message):
     ran = await message.reply_text("<code>Processing.....</code>")
-    link = message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    link = "https://" + message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not link:
         await ran.edit_text("Please provide a valid video link from Facebook.")
         return
-
-    # Add http:// prefix if missing
-    if not link.startswith("http"):
-        link = f"http://{link}"
 
     url = "https://facebook-video-and-reel-downloader.p.rapidapi.com/"
     querystring = {"url": link}
