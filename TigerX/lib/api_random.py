@@ -332,3 +332,41 @@ async def whois_domain_target(client, message):
                     await ran.edit_text("Error: could not fetch WHOIS information.")
     except Exception as e:
         await ran.edit_text(f"Error: {str(e)}")
+
+
+async def api_movie_info(client, message):
+    ran = await message.reply_text("<code>Processing.....</code>")
+    search = message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    if not search:
+        await ran.edit_text("please, for example, find a movie")
+        return
+    type = search
+    apikey = "212089e4" # don't share this by @xtsea 
+    search_text = ""
+    api_url = f"http://www.omdbapi.com/?apikey={apikey}&s={type}" # parameter check : http://www.omdbapi.com/
+    response = requests.get(api_url)
+    if response.status_code == 200:
+        data_movie = response.json()
+        try:
+            search_title = data_movie["Search"][0]["title"] # using [0] empty something 
+            year_movie = data_movie["Search"][0]["year"]
+            imdb_code = data_movie["Search"][0]["imdbID"]
+            movies = data_movie["Search"][0]["type"]
+            image_movie_url = data_movie["Search"][0]["Poster"]
+        except Exception as e:
+            await ran.edit_text(f"Error request {e}")
+            return
+        if search_title and year_movie and imdb_code and movies and image_movie_url:
+            search_text += f"<b>Film movie :</b> {search_title}\n"
+            search_text += f"<b>Year :</b> {year_movie}\n"
+            search_text += f"<b>Imdb ID :</b> {imdb_code}\n"
+            search_text += f"<b>Type :</b> {movies}\n"
+            await client.send_photo(message.chat.id, photo=image_movie_url, reply_to_message_id=message.id)
+        else:
+            await ran.edit_text("No data for this Movies.")
+    else:
+        await ran.edit_text("Error: could not find Movies.")
+    try:
+        await ran.delete()
+    except Exception:
+        pass
