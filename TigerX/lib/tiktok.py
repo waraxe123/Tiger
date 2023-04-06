@@ -49,13 +49,13 @@ async def tiktok_downloader(client, message):
                 send_video_file_path = "tigerx_userbot.mp4"
                 with open(send_video_file_path, "wb") as f:
                     f.write(video_response.content)
-                await client.send_video(message.chat.id, video=send_video_file_path, reply_to_message_id=message.message_id)
+                await client.send_video(message.chat.id, video=send_video_file_path, reply_to_message_id=message.id)
                 os.remove(send_video_file_path)
             elif all(music_response.ok for music_response in music_responses):
                 send_audio_file_path = "tigerx_userbot.mp3"
                 with open(send_audio_file_path, "wb") as f:
                     f.write(music_response.content)
-                await client.send_audio(message.chat.id, audio=send_audio_file_path, reply_to_message_id=message.message_id)
+                await client.send_audio(message.chat.id, audio=send_audio_file_path, reply_to_message_id=message.id)
                 os.remove(send_audio_file_path)
             else:
                 await ran.edit_text("Error please try again")
