@@ -63,3 +63,53 @@ async def tiktok_downloader(client, message):
         await ran.delete()
     except Exception:
         pass
+
+async def tiktok_downloader_2(client, message):
+    ran = await message.reply_text("<code>Processing.....</code>")
+    link = message.text.split(" ", 1)[1] if len(message.command) !=1 else None
+    if not link:
+       await ran.edit_text("please for example the TikTok link here")
+       return
+
+    url = "https://tiktok-downloader-without-watermark-api-download-tiktok-videos.p.rapidapi.com/"
+
+    payload = { 
+        "URL": link,
+        "type": "video",
+        "file": "mp4",
+        "quality": "NO Watermark",
+        "mute": False}
+
+    headers = {
+     "content-type": "application/x-www-form-urlencoded",
+     "X-RapidAPI-Key": "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb",
+     "X-RapidAPI-Host": "tiktok-downloader-without-watermark-api-download-tiktok-videos.p.rapidapi.com"}
+
+     response = requests.request("POST", url, headers=headers, data=payload)
+     if response.status_code == 200:
+         data = response.json()
+         try:
+             duration = data["duration"]
+             video_url = data["links"][0]["url"]
+         except Exception as e:
+             await ran.edit_text("Error request {e}")
+             return
+
+          video_urls = response.content
+         if video_url:
+             if video_urls:
+                 send_video_path = "video.mp4"
+                 with open(send_video_path, "wb") as f:
+                     f.write(video_urls)
+                 await client.send_video(message.chat.id, video=send_video_path, reply_to_message_id=message.id)
+                 os.remove(send_video_path)
+             else:
+                 await ran.edit_text("Error please try again")
+         else:
+             await ran.edit_text("Error please try again tiktok")
+     else:
+         await ran.edit_text("Error failed api TikTok")
+     try:
+        await ran.delete()
+     except Exception:
+        pass
