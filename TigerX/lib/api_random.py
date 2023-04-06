@@ -138,8 +138,8 @@ async def api_quotes_new(client, message):
     if response.status_code == 200:
         data_quotes = response.json()
         try:
-            request_quotes = data_quotes["quote"]
-            request_author = data_quotes["author"]
+            request_quotes = data_quotes[0]["quote"]
+            request_author = data_quotes[0]["author"]
         except Exception as e:
              await ran.edit_text(f"Error request {e}")
              return
