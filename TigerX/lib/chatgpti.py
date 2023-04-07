@@ -106,7 +106,12 @@ async def new_chatgpt_turbo(client, message):
         "completion_tokens": 10,
         "finish_reason": "stop",
         "index": 0,
-        "messages": [{"role": "user", "content": ask_turbo}]
+        "messages": [ 
+         {
+          "role": "user",
+          "content": ask_turbo
+      }
+     ]
     }
     headers = {
         "content-type": "application/json",
