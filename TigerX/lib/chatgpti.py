@@ -36,6 +36,7 @@ async def new_model_chatgpt(client, message):
     url = "https://openai80.p.rapidapi.com/completions"
     payload = {"model": "text-davinci-003", "prompt": asked, "max_tokens": 7, "temperature": 0, "top_p": 1, "n": 1, "stream": False, "logprobs": None, "stop": None}
     headers = {"content-type": "application/json", f"X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
+    response = requests.request("POST", url, json=payload, headers=headers)
     if not APIKEY:
         await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
         return
@@ -77,6 +78,7 @@ async def chatgpt_ask(c, m):
 
 
 # credits @xtsea
+# using original openai.com 
 
 async def chatpgt_image_generator(c, m):
     A = "h"
@@ -130,7 +132,7 @@ async def new_chatgpt_turbo(client, message):
         await ran.edit_text("for example the question asked this chatgpt")
         return
     if not APIKEY:
-       await ran.edit_text("Missing Api key: rapidapi.com")
+       await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
        return
     url = "https://openai80.p.rapidapi.com/chat/completions"
     payload = {"model": "gpt-3.5-turbo", "messages": [{"role": "user", "content": ask_turbo}]}
