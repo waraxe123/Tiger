@@ -36,7 +36,7 @@ async def instagram_downloader(client, message):
             await ran.edit_text(f"Error request {e}")
             return
         fast_downloader = requests.get(igdownloader)
-        if ig_downloader:
+        if igdownloader:
             if fast_downloader:
                  send_photo_instgram = "instagram-ig.jpg"
                  with open(send_video_instgram, "wb") as f:
