@@ -89,6 +89,9 @@ async def chatpgt_image_generator(c, m):
     except Exception:
         pass
 
+# Credits @xtsea 
+# DON'T REMOVE CREDITS THIS
+
 async def new_chatgpt_turbo(client, message):
     ran = await message.reply_text("<code>Processing....</code>")
     ask_turbo = message.text.split(None, 1)[1] if len(message.command) != 1 else None
@@ -115,7 +118,7 @@ async def new_chatgpt_turbo(client, message):
     if response.status_code == 200:
         data_turbo = response.json()
         try:
-            message_text = data_turbo["choices"]["0"]["message"][0]["role"][0]["assistant"][0]["content"]
+            message_text = data_turbo["choices"]["0"]["message"]["content"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
