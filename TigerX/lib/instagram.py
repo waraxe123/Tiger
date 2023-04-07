@@ -36,7 +36,7 @@ async def instagram_downloader(client, message):
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
-        if igdownloader:
+        if igdownloader and igcaption:
             try:
                 await client.send_video(message.chat.id, video=igdownloader, caption=igcaption, reply_to_message_id=message.id)
             except Exception:
