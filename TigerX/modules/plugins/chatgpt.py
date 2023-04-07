@@ -12,12 +12,16 @@ from TigerX.lib import *
 
 from pykillerx.help import *
 
-@randydev(command("ask", cmd) & owner)
+@randydev(command("askd", cmd) & owner)
 async def chatgpt_cmd(c: Client, m: Message):
     await chatgpt_ask(c, m)
 
-@randydev(command("ask2", cmd) & owner)
-async def chatgpt_turbo_cmd(client: Client, message: Message):
+@randydev(command("askd2", cmd) & owner)
+async def chatgpt_rapi_cmd(client: Client, message: Message):
+    await new_model_chatgpt(client, message)
+
+@randydev(command("askt", cmd) & owner)
+async def chatgpt_rapi_turbo_cmd(client: Client, message: Message):
     await new_chatgpt_turbo(client, message)
 
 @randydev(command(["aimage", "dalle"], cmd) & owner)
