@@ -23,33 +23,33 @@ async def instagram_downloader(client, message):
     if not link:
         await ran.edit_text("for example Instagram links")
         return
-   APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
-   url = "https://instagram-downloader-download-instagram-videos-stories.p.rapidapi.com/index"
-   querystring = {"url": link}
-   headers = {"X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "instagram-downloader-download-instagram-videos-stories.p.rapidapi.com"}
-   response = requests.get(url, headers=headers, params=querystring)
-   if response.status_code == 200:
-       dataig = response.json()
-       try:
-           igdownloader = dataig["media"]
-       except Exception as e:
-           await ran.edit_text(f"Error request {e}")
-           return
-       fast_downloader = requests.get(igdownloader)
-       if ig_downloader:
-           if fast_downloader:
-                send_photo_instgram = "instagram-ig.jpg"
-                with open(send_video_instgram, "wb") as f:
-                    f.write(fast_downloader.content)
-                await client.send_photo(message.chat.id, photo=send_photo_instgram, reply_to_message_id=message.id)
-                os.remove(send_photo_instgram)
-           else:
-               await ran.edit_text("Failed to photo please try again")
-       else:
-           await ran.edit_text("Failed to api Instagram please try again")
-   else:
-       await ran.edit_text("Failed api please try again")
-   try:
-       await ran.delete()
-   except Exception:
-       pass
+    APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
+    url = "https://instagram-downloader-download-instagram-videos-stories.p.rapidapi.com/index"
+    querystring = {"url": link}
+    headers = {"X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "instagram-downloader-download-instagram-videos-stories.p.rapidapi.com"}
+    response = requests.get(url, headers=headers, params=querystring)
+    if response.status_code == 200:
+        dataig = response.json()
+        try:
+            igdownloader = dataig["media"]
+        except Exception as e:
+            await ran.edit_text(f"Error request {e}")
+            return
+        fast_downloader = requests.get(igdownloader)
+        if ig_downloader:
+            if fast_downloader:
+                 send_photo_instgram = "instagram-ig.jpg"
+                 with open(send_video_instgram, "wb") as f:
+                     f.write(fast_downloader.content)
+                 await client.send_photo(message.chat.id, photo=send_photo_instgram, reply_to_message_id=message.id)
+                 os.remove(send_photo_instgram)
+            else:
+                await ran.edit_text("Failed to photo please try again")
+        else:
+            await ran.edit_text("Failed to api Instagram please try again")
+    else:
+        await ran.edit_text("Failed api please try again")
+    try:
+        await ran.delete()
+    except Exception:
+        pass
