@@ -110,7 +110,7 @@ async def new_chatgpt_turbo(client, message):
     if response.status_code == 200:
         data_turbo = response.json()
         try:
-            message_text = data_turbo["choices"]["0"]["message"]["content"]
+            message_text = data_turbo["choices"][0]["message"]["content"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
