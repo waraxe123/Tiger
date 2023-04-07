@@ -17,7 +17,7 @@ async def chatgpt_cmd(c: Client, m: Message):
     await chatgpt_ask(c, m)
 
 @randydev(command("ask2", cmd) & owner)
-async def chatgpt_turbo_cmd(c: Client, m: Message):
+async def chatgpt_turbo_cmd(client: Client, message: Message):
     await new_chatgpt_turbo(client, message)
 
 @randydev(command(["aimage", "dalle"], cmd) & owner)
