@@ -39,7 +39,7 @@ async def instagram_downloader(client, message):
         if igdownloader:
             if fast_downloader:
                  send_photo_instgram = "instagram-ig.jpg"
-                 with open(send_video_instgram, "wb") as f:
+                 with open(send_photo_instgram, "wb") as f:
                      f.write(fast_downloader.content)
                  await client.send_photo(message.chat.id, photo=send_photo_instgram, reply_to_message_id=message.id)
                  os.remove(send_photo_instgram)
