@@ -93,35 +93,35 @@ async def new_chatgpt_turbo(client, message):
     ran = await message.reply_text("<code>Processing....</code>")
     ask_turbo = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not ask_turbo:
-       await ran.edit_text("for example the question asked this chatgpt")
-       return
+        await ran.edit_text("for example the question asked this chatgpt")
+        return
 
-   url = "https://openai80.p.rapidapi.com/chat/completions"
-   payload = {
-           "model": "gpt-3.5-turbo",
-           "prompt_tokens": 10,
-           "completion_tokens": 10,
-           "finish_reason": "stop",
-           "index": 0,
-	   "messages": [{"role": "user", "content": ask_turbo}]
-   }       
-   headers = {
-           "content-type": "application/json",
-           "X-RapidAPI-Key": "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb",
-           "X-RapidAPI-Host": "openai80.p.rapidapi.com"
-   }       
-   response = requests.request("POST", url, json=payload, headers=headers)
-   
-   if response.status_code == 200:
-       data_turbo = response.json()
-       try:
-           message_text = data_turbo["choices"]["0"]["message"][0]["role"][0]["assistant"][0]["content"]
-       except Exception as e:
-           await ran.edit_text(f"Error request {e}")
-           return
-       if message_text:
-           await ran.edit_text(message_text)
-       else:
-           await ran.edit_text("Yahh, sorry i can't get your answer")
-   else:
-       await ran.edit_text("Failed to api chatgpt turbo")
+    url = "https://openai80.p.rapidapi.com/chat/completions"
+    payload = {
+        "model": "gpt-3.5-turbo",
+        "prompt_tokens": 10,
+        "completion_tokens": 10,
+        "finish_reason": "stop",
+        "index": 0,
+        "messages": [{"role": "user", "content": ask_turbo}]
+    }
+    headers = {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb",
+        "X-RapidAPI-Host": "openai80.p.rapidapi.com"
+    }
+    response = requests.request("POST", url, json=payload, headers=headers)
+
+    if response.status_code == 200:
+        data_turbo = response.json()
+        try:
+            message_text = data_turbo["choices"]["0"]["message"][0]["role"][0]["assistant"][0]["content"]
+        except Exception as e:
+            await ran.edit_text(f"Error request {e}")
+            return
+        if message_text:
+            await ran.edit_text(message_text)
+        else:
+            await ran.edit_text("Yahh, sorry i can't get your answer")
+    else:
+        await ran.edit_text("Failed to api chatgpt turbo")
