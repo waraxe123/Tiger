@@ -8,7 +8,7 @@ add_command_help(
     [
         ["igdl", "to photo or video using the API Instagram."],
         ["fbdl", "to video using the api Facebook"],
-        ["tt", "to ask questions using the api TikTok"],
+        ["tt", "to video using the api TikTok"],
 
     ],
 )
