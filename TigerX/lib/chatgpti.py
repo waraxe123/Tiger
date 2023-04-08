@@ -52,7 +52,7 @@ async def new_model_chatgpt(client, message):
         await ran.edit_text("question ask this chagpt")
         return
     url = "https://openai80.p.rapidapi.com/completions"
-    payload_headers = PayLoadHeaders("text-davinci-003" asked, RAPIDAPI)
+    payload_headers = PayLoadHeaders("text-davinci-003", asked, RAPIDAPI)
     response = requests.request("POST", url, json=payload_headers.payload, headers=payload_headers.headers)
     if not RAPIDAPI:
         await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
