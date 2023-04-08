@@ -56,3 +56,4 @@ from .fry import *
 from .tiktok import *
 from .facebook import *
 from .instagram import *
+from .update import *
