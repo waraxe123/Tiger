@@ -32,15 +32,14 @@ async def instagram_downloader(client, message):
         dataig = response.json()
         try:
             igdownloader = dataig["media"]
-            igcaption = dataig["title"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
-        if igdownloader and igcaption:
+        if igdownloader:
             try:
-                await client.send_video(message.chat.id, video=igdownloader, caption=igcaption, reply_to_message_id=message.id)
+                await client.send_video(message.chat.id, video=igdownloader, reply_to_message_id=message.id)
             except Exception:
-                await client.send_photo(message.chat.id, photo=igdownloader, caption=igcaption, reply_to_message_id=message.id)
+                await client.send_photo(message.chat.id, photo=igdownloader, reply_to_message_id=message.id)
         else:
             await ran.edit_text("Failed to api Instagram please try again")
     else:
