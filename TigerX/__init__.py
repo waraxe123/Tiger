@@ -102,7 +102,7 @@ MAX_MESSAGE_LENGTH = 4096
 
 HEROKU_API_KEY = None 
 HEROKU_APP_NAME = None 
-
+GIT_TOKEN = None
 BOT_VER = "0.3.35@build"
 BRANCH = "dev"
 REPO_URL = "https://github.com/TeamKillerX/TigerX-Userbot"
