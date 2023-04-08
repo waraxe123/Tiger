@@ -85,11 +85,11 @@ async def chatpgt_image_generator(client, message):
     APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
     ask_image = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not ask_image:
-        await ran.edit_text("question ask this other picture")
+        await ran.edit_text("Please ask a question or provide an image")
         return
     if not APIKEY:
-       await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
-       return
+        await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
+        return
     url = "https://openai80.p.rapidapi.com/images/generations"
     payload_image = ImageGenerator(ask_image, "1024x1024", APIKEY)
     headers = {"content-type": "application/json", "X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
@@ -101,13 +101,10 @@ async def chatpgt_image_generator(client, message):
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
-        if send_image:
-            send_image = SendPhoto(chat_id=message.chat.id, photo=image_url, replywithme=message.id)
-            await send_image(client)
-        else:
-            await ran.edit_text("Yahh, sorry i can't get your photo")
+        send_image = SendPhoto(chat_id=message.chat.id, ph=image_url, replywithme=message.id, caption="Generated Image")
+        await send_image(client)
     else:
-        await ran.edit_text("Failed to api chatgpt image")
+        await ran.edit_text("Failed to generate image. Please try again later.")
     try:
         await ran.delete()
     except Exception:
