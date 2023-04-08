@@ -22,7 +22,7 @@ from TigerX import OPENAI_API
 from TigerX import *
 from TigerX.lib import *
 
-from pykillerx.openai import PayLoadHeaders
+from pykillerx.openai import PayLoadHeaders, ImageGenerator
 
 
 # model text-davinci-003
@@ -95,9 +95,9 @@ async def chatpgt_image_generator(c, m):
        await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
        return
     url = "https://openai80.p.rapidapi.com/images/generations"
-    payload = {"prompt": ask_image, "n": 2, "size": "1024x1024"}
+    payload_image = ImageGenerator(ask_image, "1024x1024", APIKEY)
     headers = {"content-type": "application/json", "X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
-    response = requests.request("POST", url, json=payload, headers=headers)
+    response = requests.request("POST", url, json=payload_image.payload, headers=payload_image.headers)
     if response.status_code == 200:
         data_image = response.json()
         try:
