@@ -26,18 +26,35 @@ from TigerX.lib import *
 # model text-davinci-003
 # using rapidapi.com
 
+class PayLoadHeaders:
+    def __init__(self, model, prompt, api_key):
+        self.payload = {
+            "model": model,
+            "prompt": prompt,
+            "max_tokens": 200,
+            "temperature": 0,
+            "top_p": 1,
+            "stream": False,
+            "logprobs": None,
+            "stop": None
+        }
+        self.headers = {
+            "content-type": "application/json",
+            "X-RapidAPI-Key": apikey,
+            "X-RapidAPI-Host": "openai80.p.rapidapi.com"
+        }
+
 async def new_model_chatgpt(client, message):
     ran = await message.reply_text("<code>Processing....</code>")
-    APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
+    RAPIDAPI = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
     asked = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not asked:
         await ran.edit_text("question ask this chagpt")
         return
     url = "https://openai80.p.rapidapi.com/completions"
-    payload = {"model": "text-davinci-003", "prompt": asked, "max_tokens": 200, "temperature": 0, "top_p": 1, "n": 1, "stream": False, "logprobs": None, "stop": None}
-    headers = {"content-type": "application/json", f"X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
-    response = requests.request("POST", url, json=payload, headers=headers)
-    if not APIKEY:
+    payload_headers = PayLoadHeaders("text-davinci-003" asked, RAPIDAPI)
+    response = requests.request("POST", url, json=payload_headers.payload, headers=payload_headers.headers)
+    if not RAPIDAPI:
         await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
         return
     if response.status_code == 200:
