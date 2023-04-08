@@ -98,8 +98,14 @@ STRING_SESSION1 = config.get("string_pyrogram", "string_session1")
 SAVE_CONTENT = -1001624259885
 MAX_MESSAGE_LENGTH = 4096
 
-BOT_VER = "0.3.32@build"
+# this unsupported 
+
+HEROKU_API_KEY = None 
+HEROKU_APP_NAME = None 
+GIT_TOKEN = None
+BOT_VER = "0.3.35@build"
 BRANCH = "dev"
+REPO_URL = "https://github.com/TeamKillerX/TigerX-Userbot"
 
 
 if not BOT_TOKEN:

@@ -62,10 +62,12 @@ async def hello_world(client, message):
 
 ## Example Api Tools
 
-* this is available api : [`https://www.jsonapi.co/public-api`](https://www.jsonapi.co/public-api)
+* [x] <b>this is available api</b> : [`https://www.jsonapi.co/public-api`](https://www.jsonapi.co/public-api)
+* [x] <b>tiktok no watermark</b> : [`https://rapidapi.com/yi005/api/tiktok-video-no-watermark2/`](https://rapidapi.com/yi005/api/tiktok-video-no-watermark2/)
+* [x] <b>facebook downloader</b> : [`https://rapidapi.com/officialofun-C-wpfpix418/api/facebook-video-and-reel-downloader`](https://rapidapi.com/officialofun-C-wpfpix418/api/facebook-video-and-reel-downloader)
+* [x] <b>openai chatgpt</b> : [`https://rapidapi.com/openai-api-openai-api-default/api/openai80`](https://rapidapi.com/openai-api-openai-api-default/api/openai80)
 
-* sure make plugins example `api_example.py`
-* check example link : [`Link Here`](https://github.com/TeamKillerX/TigerX-Userbot/blob/test/TigerX/lib/api_random.py)
+* <b>sure make plugins example</b> `api_example.py`
 ```python
 import requests
 
@@ -86,11 +88,26 @@ else:
     # something 
 ```
 
+## Example Python File Open
+```python 
+
+import requests
+import os
+
+url = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fwallpapers.com%2Fimages%2Fhd%2Frandom-objects-alt-aesthetic-2zgd29x0bplv01u5.jpg&tbnid=1RO38bzjeP2n_M&vet=1&imgrefurl=https%3A%2F%2Fwallpapers.com%2Fwallpapers%2Frandom-objects-alt-aesthetic-2zgd29x0bplv01u5.html&docid=woUVzf9ut-iezM&w=1080&h=1920&hl=id&source=sh%2Fx%2Fim"
+download = requests.get(url)
+send_image_url = "example.jpg"
+with open(send_image_url, "wb") as f:
+    f.write(download.content)
+await client.send_photo(message.chat.id, photo=send_image_url)
+os.remove(send_image_url)
+```
+
 ### Obtaining `sp_dc` and `sp_key` cookies
 
 Spotcast uses two cookies to authenticate against Spotify in order to have access to the required services.
 
-To obtain the cookies, these different methods can be used:
+To obtain the cookies these different methods can be used:
 
 #### Chrome based browser
 

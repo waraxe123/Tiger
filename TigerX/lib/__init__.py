@@ -53,3 +53,7 @@ from .pat import *
 from .listmb import *
 from .api_ninja import *
 from .fry import *
+from .tiktok import *
+from .facebook import *
+from .instagram import *
+from .update import *
