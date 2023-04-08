@@ -15,7 +15,7 @@ from typing import Tuple
 from PIL import Image, ImageDraw, ImageFont
 
 from pyrogram import enums
-from datetime import datetime
+from datetime import datetime as dt
 from os import environ, execle, path, remove
 
 from git import Repo
@@ -95,7 +95,7 @@ requirements_path = os.path.join(
 
 
 def restart():
-    os.execvp(sys.executable, [sys.executable, "-m", "DarkWeb"])
+    os.execvp(sys.executable, [sys.executable, "-m", "TigerX"])
 
 async def is_heroku():
     return "heroku" in socket.getfqdn()
@@ -117,7 +117,7 @@ async def gen_chlog(repo, diff):
     d_form = "%d/%m/%y"
     for c in repo.iter_commits(diff):
         ch_log += (
-            f"• [{c.committed_datetime.strftime(d_form)}]: {c.summary} <{c.author}>\n"
+            f"• [{c.committed_dt.strftime(d_form)}]: {c.summary} <{c.author}>\n"
         )
     return ch_log
 
