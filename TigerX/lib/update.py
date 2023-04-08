@@ -254,7 +254,7 @@ async def upstream(client, message):
             repo.git.reset("--hard", "FETCH_HEAD")
         await updateme_requirements()
         await status.edit(
-            "`DarkWeb Successfully Updated! TigerX can be used again.`",
+            "`TigerX Successfully Updated! TigerX can be used again.`",
         )
         args = [sys.executable, "-m", "TigerX"]
         execle(sys.executable, *args, environ)
