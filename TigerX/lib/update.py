@@ -87,8 +87,10 @@ if GIT_TOKEN:
 else:
    UPSTREAM_REPO_URL = REPO_URL
 
-requirements_path = path.join(
-    path.dirname(path.dirname(path.dirname(__file__))), "requirements.txt"
+__file__ = os.path.abspath(__file__)
+
+requirements_path = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "requirements.txt"
 )
 
 
