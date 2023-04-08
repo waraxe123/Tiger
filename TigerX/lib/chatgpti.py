@@ -23,11 +23,7 @@ from TigerX import *
 from TigerX.lib import *
 
 from pykillerx.openai import PayLoadHeaders, ImageGenerator
-
-
-# model text-davinci-003
-# using rapidapi.com
-
+from pykillerx.types import SendPhoto
 
 async def new_model_chatgpt(client, message):
     ran = await message.reply_text("<code>Processing....</code>")
@@ -84,10 +80,10 @@ async def chatgpt_ask(c, m):
 
 # using rapidapi.com
 
-async def chatpgt_image_generator(c, m):
-    ran = await m.reply_text("<code>Processing....</code>")
+async def chatpgt_image_generator(client, message):
+    ran = await message.reply_text("<code>Processing....</code>")
     APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
-    ask_image = m.text.split(None, 1)[1] if len(m.command) != 1 else None
+    ask_image = message.text.split(None, 1)[1] if len(message.command) != 1 else None
     if not ask_image:
         await ran.edit_text("question ask this other picture")
         return
@@ -101,20 +97,13 @@ async def chatpgt_image_generator(c, m):
     if response.status_code == 200:
         data_image = response.json()
         try:
-            send_image = data_image["data"][0]["url"]
+            image_url = data_image["data"][0]["url"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
-        image_response = requests.get(send_image)
         if send_image:
-            if image_response:
-                image_original = "chatgpt-original.jpg"
-                with open(image_original, "wb") as f:
-                    f.write(image_response.content)
-                await c.send_photo(m.chat.id, photo=image_original, reply_to_message_id=m.id)
-                os.remove(image_original)
-            else:
-                await ran.edit_text("failed to photo please try again")
+            send_image = SendPhoto(chat_id=message.chat.id, photo=image_url, replywithme=message.id)
+            await send_image(client)
         else:
             await ran.edit_text("Yahh, sorry i can't get your photo")
     else:
@@ -123,9 +112,6 @@ async def chatpgt_image_generator(c, m):
         await ran.delete()
     except Exception:
         pass
-
-# model gpt-3.5-turbo
-# using rapidapi.com
 
 async def new_chatgpt_turbo(client, message):
     ran = await message.reply_text("<code>Processing....</code>")
