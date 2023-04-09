@@ -60,7 +60,7 @@ async def chatgpt_ask(client, message):
     link = LinkOrReason(message)()
     question = link if link else None
     if not question:
-        await ReplyToProcessing(f"use command <code>.{m.command[0]} [question]</code> to ask questions using the API.")(message)
+        await ReplyToProcessing(f"use command <code>.{message.command[0]} [question]</code> to ask questions using the API.")(message)
         return
     if not OPENAI_API:
         await ReplyToProcessing("missing api key : `OPENAI_API`")(message)
