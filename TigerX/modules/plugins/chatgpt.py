@@ -13,8 +13,8 @@ from TigerX.lib import *
 from pykillerx.help import *
 
 @randydev(command("askd", cmd) & owner)
-async def chatgpt_cmd(c: Client, m: Message):
-    await chatgpt_ask(c, m)
+async def chatgpt_cmd(client: Client, message: Message):
+    await chatgpt_ask(client, message)
 
 @randydev(command("askd2", cmd) & owner)
 async def chatgpt_rapi_cmd(client: Client, message: Message):
@@ -25,8 +25,8 @@ async def chatgpt_rapi_turbo_cmd(client: Client, message: Message):
     await new_chatgpt_turbo(client, message)
 
 @randydev(command(["dalle"], cmd) & owner)
-async def chatgpt_image_cmd(c: Client, m: Message):
-    await chatpgt_image_generator(c, m)
+async def chatgpt_image_cmd(client: Client, message: Message):
+    await chatpgt_image_generator(client, message)
 
 add_command_help(
     "openai",
