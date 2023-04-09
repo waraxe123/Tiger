@@ -23,18 +23,19 @@ from TigerX import *
 from TigerX.lib import *
 
 from pykillerx.openai import PayLoadHeaders, ImageGenerator
-from pykillerx.types import SendPhoto
+from pykillerx.types import SendPhoto, LinkOrReason, ReplyToProcessing 
 
 async def new_model_chatgpt(client, message):
-    ran = await message.reply_text("<code>Processing....</code>")
+    ran = await ReplyToProcessing("<code>Processing....</code>")(message)
     RAPIDAPI = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
-    asked = message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    link = LinkOrReason(message)()
+    asked = link if link else None
     if not asked:
-        await ran.edit_text("question ask this chagpt")
+        await ran.edit_text("Please ask a question.")
         return
     url = "https://openai80.p.rapidapi.com/completions"
     payload_headers = PayLoadHeaders("text-davinci-003", asked, RAPIDAPI)
-    response = requests.request("POST", url, json=payload_headers.payload, headers=payload_headers.headers)
+    response = requests.post(url, json=payload_headers.payload, headers=payload_headers.headers)
     if not RAPIDAPI:
         await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
         return
@@ -46,26 +47,27 @@ async def new_model_chatgpt(client, message):
             await ran.edit_text(f"Error request {e}")
             return
         if text_davinci:
-            await ran.edit(text_davinci)
+            await ran.edit_text(text_davinci)
         else:
-            await ran.edit_text("Yahh, sorry i can't get your answer")
+            await ran.edit_text("Sorry, I couldn't find an answer to your question.")
     else:
-        await ran.edit_text("failed to api chatgpt")
-    
+        await ran.edit_text("Failed to connect to OpenAI's API.")
+
 
 # using original openai.com 
 
-async def chatgpt_ask(c, m):
-    question = (m.text.split(None, 1)[1] if len(m.command) != 1 else None)
+async def chatgpt_ask(client, message):
+    link = LinkOrReason(message)()
+    question = link if link else None
     if not question:
-       await m.reply(f"use command <code>.{m.command[0]} [question]</code> to ask questions using the API.")
-       return
+        await ReplyToProcessing(f"use command <code>.{m.command[0]} [question]</code> to ask questions using the API.")(message)
+        return
     if not OPENAI_API:
-       await m.reply("missing api key : `OPENAI_API`")
-       return
+        await ReplyToProcessing("missing api key : `OPENAI_API`")(message)
+        return
     headers = {"Content-Type": "application/json", "Authorization": f"Bearer {OPENAI_API}"}
     json_data = {"model": "text-davinci-003", "prompt": question, "max_tokens": 200, "temperature": 0}
-    msg = await m.reply(f"Wait a moment looking for your answer..")
+    msg = await ReplyToProcessing(f"Wait a moment looking for your answer..")(message)
     try:
         response = (await http.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
         await msg.edit(response["choices"][0]["text"])
@@ -81,9 +83,10 @@ async def chatgpt_ask(c, m):
 # using rapidapi.com
 
 async def chatpgt_image_generator(client, message):
-    ran = await message.reply_text("<code>Processing....</code>")
+    ran = await ReplyToProcessing("<code>Processing....</code>")(message)
     APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
-    ask_image = message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    link = LinkOrReason(message)()
+    ask_image = link if link else None
     if not ask_image:
         await ran.edit_text("Please ask a question or provide an image")
         return
@@ -111,9 +114,10 @@ async def chatpgt_image_generator(client, message):
         pass
 
 async def new_chatgpt_turbo(client, message):
-    ran = await message.reply_text("<code>Processing....</code>")
+    ran = await ReplyToProcessing("<code>Processing....</code>")(message)
     APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
-    ask_turbo = message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    link = LinkOrReason(message)()
+    ask_turbo = link if link else None
     if not ask_turbo:
         await ran.edit_text("for example the question asked this chatgpt")
         return
