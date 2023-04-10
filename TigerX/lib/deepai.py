@@ -54,3 +54,19 @@ async def toonify(c, m):
         os.remove(file_path)
     except Exception:
         pass
+
+
+async def fantasy_portrait(client, message):
+    ran = await message.reply_text("<code>Processing.....</code>")
+    search_text = message.text.split(" ", 1)[1] if len(message.command) > 1 else None
+    if not search_text:
+        await message.reply_text("Example : <code>+fantasy god of war</code>")
+        return
+    headers = {"api_key": "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"}
+    data_rjn = {"text": search_text}
+    r = requests.post("https://api.deepai.org/api/fantasy-portrait-generator", json=data_rjn, headers=headers).json()
+    if "output_url" in r:
+         await client.send_photo(message.chat.id, r["output_url"])
+         await ran.delete()
+    else:
+        await ran.edit("Failed to fantasy portrait the image.")
