@@ -64,22 +64,8 @@ async def fantasy_portrait(client, message):
         return
     headers = {"api-key": "4871e0ba-3bb6-40d8-b600-f415877c7606"}
     data_string = {"text": search_text}
-    response = requests.post("https://api.deepai.org/api/fantasy-portrait-generator", data=data_string, headers=headers)
-    if response.status_code == 200:
-        search = response.json()
-        try:
-            search_url = search["output_url"]
-        except Exception:
-            pass
-            return
-        if search_url:
-            await client.send_photo(message.chat.id, photo=search_url["output_url"])
-        else:
-            await ran.edit_text("Failed to fantasy the image.")
+    response = requests.post("https://api.deepai.org/api/fantasy-portrait-generator", data=data_string, headers=headers).json()
+    if "output_url" response:
+         await client.send_photo(message.chat.id, response["output_url"])
     else:
         await ran.edit_text("Failed to fantasy portrait the image.")
-    try:
-        await asyncio.sleep(3)
-        await ran.delete()
-    except Exception:
-        pass
