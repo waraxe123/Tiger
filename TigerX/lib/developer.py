@@ -98,12 +98,12 @@ async def evaluation_cmd_t(client, message):
     else:
         await status_message.edit(final_output, parse_mode=enums.ParseMode.MARKDOWN)
 
-async def aexec(code, c, m):
+async def aexec(code, client, message):
     exec(
-        "async def __aexec(c, m): "
+        "async def __aexec(client, message): "
         + "".join(f"\n {l_}" for l_ in code.split("\n"))
     )
-    return await locals()["__aexec"](c, m)
+    return await locals()["__aexec"](client, message)
 
 async def shell_exec(code, treat=True):
     process = await asyncio.create_subprocess_shell(

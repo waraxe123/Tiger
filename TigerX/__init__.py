@@ -106,7 +106,7 @@ GIT_TOKEN = None
 BOT_VER = "0.3.35@build"
 BRANCH = "dev"
 REPO_URL = "https://github.com/TeamKillerX/TigerX-Userbot"
-
+RAPI_API_KEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb" # you can fork this // you can just change the api key here
 
 if not BOT_TOKEN:
    print("PERINGATAN: BOT TOKEN TIDAK DITEMUKAN")

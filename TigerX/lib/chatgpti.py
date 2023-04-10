@@ -17,27 +17,31 @@ import asyncio
 from pyrogram import *
 from pyrogram.types import *
 
-from TigerX import OPENAI_API
+from TigerX import RAPI_API_KEY 
 
 from TigerX import *
 from TigerX.lib import *
 
+from pykillerx.openai import PayLoadHeaders, ImageGenerator
+from pykillerx.types import SendPhoto, LinkOrReason, ReplyToProcessing 
 
-# model text-davinci-003
+
+# Credits @xtsea 
+# DON'T REMOVE CREDITS THIS
+
 # using rapidapi.com
 
 async def new_model_chatgpt(client, message):
-    ran = await message.reply_text("<code>Processing....</code>")
-    APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
-    asked = message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    ran = await ReplyToProcessing("<code>Processing....</code>")(message)
+    link = LinkOrReason(message)()
+    asked = link if link else None
     if not asked:
-        await ran.edit_text("question ask this chagpt")
+        await ran.edit_text("Please ask a question.")
         return
     url = "https://openai80.p.rapidapi.com/completions"
-    payload = {"model": "text-davinci-003", "prompt": asked, "max_tokens": 200, "temperature": 0, "top_p": 1, "n": 1, "stream": False, "logprobs": None, "stop": None}
-    headers = {"content-type": "application/json", f"X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
-    response = requests.request("POST", url, json=payload, headers=headers)
-    if not APIKEY:
+    payload_headers = PayLoadHeaders("text-davinci-003", asked, RAPI_API_KEY)
+    response = requests.post(url, json=payload_headers.payload, headers=payload_headers.headers)
+    if not RAPI_API_KEY:
         await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
         return
     if response.status_code == 200:
@@ -48,96 +52,55 @@ async def new_model_chatgpt(client, message):
             await ran.edit_text(f"Error request {e}")
             return
         if text_davinci:
-            await ran.edit(text_davinci)
+            await ran.edit_text(text_davinci)
         else:
-            await ran.edit_text("Yahh, sorry i can't get your answer")
+            await ran.edit_text("Sorry, I couldn't find an answer to your question.")
     else:
-        await ran.edit_text("failed to api chatgpt")
-    
+        await ran.edit_text("Failed to connect to OpenAI's API.")
 
-# using original openai.com 
-
-async def chatgpt_ask(c, m):
-    question = (m.text.split(None, 1)[1] if len(m.command) != 1 else None)
-    if not question:
-       await m.reply(f"use command <code>.{m.command[0]} [question]</code> to ask questions using the API.")
-       return
-    if not OPENAI_API:
-       await m.reply("missing api key : `OPENAI_API`")
-       return
-    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {OPENAI_API}"}
-    json_data = {"model": "text-davinci-003", "prompt": question, "max_tokens": 200, "temperature": 0}
-    msg = await m.reply(f"Wait a moment looking for your answer..")
-    try:
-        response = (await http.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
-        await msg.edit(response["choices"][0]["text"])
-    except MessageNotModified:
-        pass
-    except Exception as e:
-        await msg.edit_text(f"Yahh, sorry i can't get your answer: {e}")
-
-
-# Credits @xtsea 
-# DON'T REMOVE CREDITS THIS
-
-# using rapidapi.com
-
-async def chatpgt_image_generator(c, m):
-    ran = await m.reply_text("<code>Processing....</code>")
-    APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
-    ask_image = m.text.split(None, 1)[1] if len(m.command) != 1 else None
+async def chatpgt_image_generator(client, message):
+    ran = await ReplyToProcessing("<code>Processing....</code>")(message)
+    link = LinkOrReason(message)()
+    ask_image = link if link else None
     if not ask_image:
-        await ran.edit_text("question ask this other picture")
+        await ran.edit_text("Please ask a question or provide an image")
         return
-    if not APIKEY:
-       await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
-       return
+    if not RAPI_API_KEY:
+        await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
+        return
     url = "https://openai80.p.rapidapi.com/images/generations"
-    payload = {"prompt": ask_image, "n": 2, "size": "1024x1024"}
-    headers = {"content-type": "application/json", "X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
-    response = requests.request("POST", url, json=payload, headers=headers)
+    payload_image = ImageGenerator(ask_image, "1024x1024", APIKEY)
+    headers = {"content-type": "application/json", "X-RapidAPI-Key": RAPI_API_KEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
+    response = requests.request("POST", url, json=payload_image.payload, headers=payload_image.headers)
     if response.status_code == 200:
         data_image = response.json()
         try:
-            send_image = data_image["data"][0]["url"]
+            image_url = data_image["data"][0]["url"]
         except Exception as e:
             await ran.edit_text(f"Error request {e}")
             return
-        image_response = requests.get(send_image)
-        if send_image:
-            if image_response:
-                image_original = "chatgpt-original.jpg"
-                with open(image_original, "wb") as f:
-                    f.write(image_response.content)
-                await c.send_photo(m.chat.id, photo=image_original, reply_to_message_id=m.id)
-                os.remove(image_original)
-            else:
-                await ran.edit_text("failed to photo please try again")
-        else:
-            await ran.edit_text("Yahh, sorry i can't get your photo")
+        send_image = SendPhoto(chat_id=message.chat.id, ph=image_url, replywithme=message.id, caption="Generated Image")
+        await send_image(client)
     else:
-        await ran.edit_text("Failed to api chatgpt image")
+        await ran.edit_text("Failed to generate image. Please try again later.")
     try:
         await ran.delete()
     except Exception:
         pass
 
-# model gpt-3.5-turbo
-# using rapidapi.com
-
 async def new_chatgpt_turbo(client, message):
-    ran = await message.reply_text("<code>Processing....</code>")
-    APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
-    ask_turbo = message.text.split(None, 1)[1] if len(message.command) != 1 else None
+    ran = await ReplyToProcessing("<code>Processing....</code>")(message)
+    link = LinkOrReason(message)()
+    ask_turbo = link if link else None
     if not ask_turbo:
         await ran.edit_text("for example the question asked this chatgpt")
         return
-    if not APIKEY:
+    if not RAPI_API_KEY:
        await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
        return
     url = "https://openai80.p.rapidapi.com/chat/completions"
     payload = {"model": "gpt-3.5-turbo", "messages": [{"role": "user", "content": ask_turbo}]}
-    headers = {"content-type": "application/json", f"X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
+    headers = {"content-type": "application/json", f"X-RapidAPI-Key": RAPI_API_KEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
     response = requests.request("POST", url, json=payload, headers=headers)
     if response.status_code == 200:
         data_turbo = response.json()
