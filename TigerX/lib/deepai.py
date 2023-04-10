@@ -62,7 +62,7 @@ async def fantasy_portrait(client, message):
     if not search_text:
         await ran.edit_text("Example : <code>+fantasy god of war</code>")
         return
-    headers = {"api_key": "4871e0ba-3bb6-40d8-b600-f415877c7606"}
+    headers = {"api-key": "4871e0ba-3bb6-40d8-b600-f415877c7606"}
     data_string = {"text": search_text}
     response = requests.post("https://api.deepai.org/api/fantasy-portrait-generator", data=data_string, headers=headers)
     if response.status_code == 200:
@@ -79,6 +79,7 @@ async def fantasy_portrait(client, message):
     else:
         await ran.edit_text("Failed to fantasy portrait the image.")
     try:
+        await asyncio.sleep(3)
         await ran.delete()
     except Exception:
         pass
