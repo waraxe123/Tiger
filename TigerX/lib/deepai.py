@@ -65,7 +65,7 @@ async def fantasy_portrait(client, message):
     headers = {"api-key": "4871e0ba-3bb6-40d8-b600-f415877c7606"}
     data_string = {"text": search_text}
     response = requests.post("https://api.deepai.org/api/fantasy-portrait-generator", data=data_string, headers=headers).json()
-    if "output_url" response:
+    if "output_url" in response:
          await client.send_photo(message.chat.id, response["output_url"])
     else:
         await ran.edit_text("Failed to fantasy portrait the image.")
