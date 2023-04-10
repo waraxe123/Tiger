@@ -69,3 +69,8 @@ async def fantasy_portrait(client, message):
          await client.send_photo(message.chat.id, response["output_url"])
     else:
         await ran.edit_text("Failed to fantasy portrait the image.")
+    try:
+        await asyncio.sleep(2)
+        await ran.delete()
+    except Exception:
+        pass
