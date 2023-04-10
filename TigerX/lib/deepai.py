@@ -62,7 +62,7 @@ async def fantasy_portrait(client, message):
     if not search_text:
         await ran.edit_text("Example : <code>+fantasy god of war</code>")
         return
-    headers = {"api_key": DEEPAI_API}
+    headers = {"api_key": "4871e0ba-3bb6-40d8-b600-f415877c7606"}
     data_string = {"text": search_text}
     r = requests.post("https://api.deepai.org/api/fantasy-portrait-generator", data=data_string, headers=headers).json()
     if "output_url" in r:
