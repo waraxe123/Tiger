@@ -17,7 +17,7 @@ import asyncio
 from pyrogram import *
 from pyrogram.types import *
 
-from TigerX import OPENAI_API
+from TigerX import RAPI_API_KEY 
 
 from TigerX import *
 from TigerX.lib import *
@@ -33,16 +33,15 @@ from pykillerx.types import SendPhoto, LinkOrReason, ReplyToProcessing
 
 async def new_model_chatgpt(client, message):
     ran = await ReplyToProcessing("<code>Processing....</code>")(message)
-    RAPIDAPI = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
     link = LinkOrReason(message)()
     asked = link if link else None
     if not asked:
         await ran.edit_text("Please ask a question.")
         return
     url = "https://openai80.p.rapidapi.com/completions"
-    payload_headers = PayLoadHeaders("text-davinci-003", asked, RAPIDAPI)
+    payload_headers = PayLoadHeaders("text-davinci-003", asked, RAPI_API_KEY)
     response = requests.post(url, json=payload_headers.payload, headers=payload_headers.headers)
-    if not RAPIDAPI:
+    if not RAPI_API_KEY:
         await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
         return
     if response.status_code == 200:
@@ -61,18 +60,17 @@ async def new_model_chatgpt(client, message):
 
 async def chatpgt_image_generator(client, message):
     ran = await ReplyToProcessing("<code>Processing....</code>")(message)
-    APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
     link = LinkOrReason(message)()
     ask_image = link if link else None
     if not ask_image:
         await ran.edit_text("Please ask a question or provide an image")
         return
-    if not APIKEY:
+    if not RAPI_API_KEY:
         await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
         return
     url = "https://openai80.p.rapidapi.com/images/generations"
     payload_image = ImageGenerator(ask_image, "1024x1024", APIKEY)
-    headers = {"content-type": "application/json", "X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
+    headers = {"content-type": "application/json", "X-RapidAPI-Key": RAPI_API_KEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
     response = requests.request("POST", url, json=payload_image.payload, headers=payload_image.headers)
     if response.status_code == 200:
         data_image = response.json()
@@ -92,18 +90,17 @@ async def chatpgt_image_generator(client, message):
 
 async def new_chatgpt_turbo(client, message):
     ran = await ReplyToProcessing("<code>Processing....</code>")(message)
-    APIKEY = "ce36c261f1mshb4a0a55aaca548ep12c9f3jsn3d6761cb63fb"
     link = LinkOrReason(message)()
     ask_turbo = link if link else None
     if not ask_turbo:
         await ran.edit_text("for example the question asked this chatgpt")
         return
-    if not APIKEY:
+    if not RAPI_API_KEY:
        await ran.edit_text("Missing Api key: <code>rapidapi.com</code>")
        return
     url = "https://openai80.p.rapidapi.com/chat/completions"
     payload = {"model": "gpt-3.5-turbo", "messages": [{"role": "user", "content": ask_turbo}]}
-    headers = {"content-type": "application/json", f"X-RapidAPI-Key": APIKEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
+    headers = {"content-type": "application/json", f"X-RapidAPI-Key": RAPI_API_KEY, "X-RapidAPI-Host": "openai80.p.rapidapi.com"}
     response = requests.request("POST", url, json=payload, headers=headers)
     if response.status_code == 200:
         data_turbo = response.json()
