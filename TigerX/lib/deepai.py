@@ -63,8 +63,8 @@ async def fantasy_portrait(client, message):
         await ran.edit_text("Example : <code>+fantasy god of war</code>")
         return
     headers = {"api_key": "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"}
-    data_rjn = {"text": search_text}
-    r = requests.post("https://api.deepai.org/api/fantasy-portrait-generator", json=data_rjn, headers=headers).json()
+    data_string = {"text": search_text}
+    r = requests.post("https://api.deepai.org/api/fantasy-portrait-generator", data=data_string, headers=headers).json()
     if "output_url" in r:
          await client.send_photo(message.chat.id, r["output_url"])
          await ran.delete()
