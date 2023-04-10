@@ -12,11 +12,7 @@ from TigerX.lib import *
 
 from pykillerx.help import *
 
-@randydev(command("askd", cmd) & owner)
-async def chatgpt_cmd(client: Client, message: Message):
-    await chatgpt_ask(client, message)
-
-@randydev(command("askd2", cmd) & owner)
+@randydev(command("ask", cmd) & owner)
 async def chatgpt_rapi_cmd(client: Client, message: Message):
     await new_model_chatgpt(client, message)
 
@@ -31,8 +27,7 @@ async def chatgpt_image_cmd(client: Client, message: Message):
 add_command_help(
     "openai",
     [
-        ["askd [question]", "to ask questions using the API chagpt openai."],
-        ["askd2 [question]", "to ask questions using the api chatgpt openai v2"],
+        ["ask [question]", "to ask questions using the api chatgpt openai"],
         ["askt [question]", "to ask questions using the api chagpt turbo"],
         ["dalle [question]", "to chatgpt image generator using the API."],
 
