@@ -9,4 +9,5 @@ apt -qq install -y --no-install-recommends \
     python3-pip \
     ffmpeg \
     libgl1-mesa-glx \
-    python3-pymediainfo
+    python3-pymediainfo \
+    libcairo2-dev
