@@ -15,9 +15,9 @@ async def sangmata_check(client, message):
             await message.reply_text(f"`Please specify a valid user ID!`")
             return
     bot = "@SangMata_beta_bot"
-    await client.send_message(bot, f"/search_id {user_id}")
+    await client.send_message(bot, f"{user_id}")
     anak_bocah_coding = await message.reply_text("`Whacking I check you`")
-    await asyncio.sleep(5)
+    await asyncio.sleep(3)
     async for stalk in client.search_messages(bot, limit=1):
         if not stalk:
             await message.reply_text("**This person has never changed their name**")
