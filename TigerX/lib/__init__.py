@@ -57,3 +57,4 @@ from .tiktok import *
 from .facebook import *
 from .instagram import *
 from .update import *
+from .pinterest import *
