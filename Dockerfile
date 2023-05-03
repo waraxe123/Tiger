@@ -28,14 +28,7 @@ RUN apt -qq install -y --no-install-recommends \
     libgl1-mesa-glx \
     python3-pymediainfo
 
-ARG USER=root
-USER $USER
-RUN python3 -m venv venv
-
 WORKDIR /app
-
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get install -y nodejs
 
 COPY . .
 
@@ -43,9 +36,5 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install --upgrade pykillerx
 RUN pip3 install --upgrade opencv-python setuptools pip
 
-COPY start start
-COPY app.py app.py
 
-EXPOSE 5000
-RUN chmod +x /app/start
-ENTRYPOINT ["./start"]
+CMD [ "python3", "-m", "TigerX"]
