@@ -7,14 +7,14 @@ import os
 from os import getenv
 from TigerX import PREFIXES
 
-handler = ["^"]
+handler = [".", "^"]
 
 cmd = handler
 
 if handler:
     cmd = ["!", "+"]
 elif PREFIXES:
-    cmd = [f"{PREFIXES}"]
+    cmd = PREFIXES
 else:
     cmd = None
 
