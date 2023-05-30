@@ -1,10 +1,10 @@
 [pyrogram]
-api_id =
-api_hash = 
-bot_token =
+api_id = 28785136
+api_hash = 3435ed2cfee6ed694f365cabf2cfa559
+bot_token = 5993497564:AAHZf-z6if-NLjXASsSmJ40xnGBE6PXAOB0
 
 [admins]
-owner_id = 
+owner_id = 2079755654
 
 [custom]
 alive_pic = 
@@ -16,8 +16,8 @@ prefixes = .
 db_url = 
 
 [apikey]
-rmbg_api = 
-openai_api = 
+rmbg_api = d7394561-0528-4714-a1ee-edd7020b48e1
+openai_api = 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
 deepai_api = 
 api_key_google = 
 search_engine_id =
@@ -27,4 +27,4 @@ sp_dc =
 sp_key =
 
 [string_pyrogram]
-string_session1 = 
+string_session1 = 1BVtsOLoBu39TqwqFGQ5HblbZJvoGkz6YIsGygPDxYPLz5ZnM9QwK516aqi3Sjh0S8oa9HrHIXIA85J3DM-MqFzHGqk_EJe8wE0zu4O2tihCZvk1Er41O7mdLnmhb2wXe-nlw-gH07w1Nmny_rn2IJqys0g3LGmjRGqEX_-WgPDvjPtBOZglmcRQ9FJrmQWVlT7TArWZPdg6nF-QBNHSNcZn9koqL4-73bYUXk_hDTCsRS1lAhxYbCKqJMKcluaokduNBXU3p21EjCr14RqVXPxzwszuAVLteETkMc-XihSo4Pnf6BYjfmCg8DK9PsAN5DPT5gPgIiXugKoXfiBMM5Uu6CoLCXDQ=
