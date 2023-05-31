@@ -13,7 +13,7 @@ pack_name = kang pack
 prefixes = ,
 
 [database]
-db_url = 
+db_url = postgres://eofmbgez:X0ysQDXjfY43Sgo0knKCzfuYdGIsQAcH@hansken.db.elephantsql.com/eofmbgez
 
 [apikey]
 rmbg_api = am1zLuEApYUJbq9LBQevnKZY
