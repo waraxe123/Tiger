@@ -10,7 +10,7 @@ owner_id = 2079755654
 alive_pic = 
 alive_text = 
 pack_name = kang pack
-prefixes = .
+prefixes = ,
 
 [database]
 db_url = 
@@ -20,7 +20,7 @@ rmbg_api =
 openai_api = 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
 deepai_api = d7394561-0528-4714-a1ee-edd7020b48e1
 api_key_google = 
-search_engine_id =
+search_engine_id = CX0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
 [spotify]
 sp_dc =
