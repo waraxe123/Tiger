@@ -1,7 +1,7 @@
 [pyrogram]
-api_id = 28785136
-api_hash = 3435ed2cfee6ed694f365cabf2cfa559
-bot_token = 6056937039:AAEE54sAVaSE3i0I8FHF6zm5tKIKjFwH3y4
+api_id = 
+api_hash = 
+bot_token = 
 
 [admins]
 owner_id = 2079755654
@@ -10,17 +10,17 @@ owner_id = 2079755654
 alive_pic = 
 alive_text = 
 pack_name = kang pack
-prefixes = ,
+prefixes = .
 
 [database]
-db_url = postgres://eofmbgez:X0ysQDXjfY43Sgo0knKCzfuYdGIsQAcH@hansken.db.elephantsql.com/eofmbgez
+db_url = 
 
 [apikey]
-rmbg_api = am1zLuEApYUJbq9LBQevnKZY
-openai_api = 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
-deepai_api = d7394561-0528-4714-a1ee-edd7020b48e1
-api_key_google = AIzaSyAjFRXRcaMvdtaohB_CvaiJYg4JyipOZAU
-search_engine_id = CX0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
+rmbg_api = 
+openai_api = 
+deepai_api = 
+api_key_google = 
+search_engine_id = 
 
 [spotify]
 sp_dc =
