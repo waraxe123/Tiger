@@ -16,7 +16,7 @@ prefixes = ,
 db_url = 
 
 [apikey]
-rmbg_api = 
+rmbg_api = am1zLuEApYUJbq9LBQevnKZY
 openai_api = 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
 deepai_api = d7394561-0528-4714-a1ee-edd7020b48e1
 api_key_google = AIzaSyAjFRXRcaMvdtaohB_CvaiJYg4JyipOZAU
